@@ -3,7 +3,7 @@ import SampleImg from "../assets/sample.png";
 
 const Profile = () => {
   return (
-    <div className="bg-yellow-100 px-4 py-2 rounded-lg">
+    <div className="bg-yellow-100 px-4 py-2 rounded-2xl">
       <div className="card-row ">
         <div className=" flex p-0 m-0 flex-col gap-0 ">
           <span className="p-0 m-0">Total Claimed</span>
