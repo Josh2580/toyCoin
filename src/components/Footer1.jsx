@@ -1,7 +1,7 @@
 import React from "react";
 import SampleImg from "../assets/sample.png";
 
-const More = () => {
+const Footer1 = () => {
   return (
     <div className="card-row gap-2 bg-pink-200 p-2">
       <div className="card-col flex-1 bg-transparent  gap-0 ">
@@ -16,4 +16,4 @@ const More = () => {
   );
 };
 
-export default More;
+export default Footer1;

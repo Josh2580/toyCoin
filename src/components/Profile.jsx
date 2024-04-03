@@ -1,7 +1,14 @@
 import React from "react";
 import SampleImg from "../assets/sample.png";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
+  const navigate = useNavigate();
+
+  const ClaimHandler = () => {
+    navigate("/claim");
+  };
+
   return (
     <div className="bg-yellow-100 px-4 py-2 rounded-2xl">
       <div className="card-row ">
@@ -16,7 +23,9 @@ const Profile = () => {
       </div>
       <div className="card-row">
         <img src={SampleImg} className="rounded-full" alt="icon" />
-        <button className="primary-btn">Play for TOY</button>
+        <button onClick={() => ClaimHandler()} className="primary-btn">
+          Play for TOY
+        </button>
       </div>
       <div className="card-row">
         <p>Recent Transactions</p>

@@ -2,7 +2,7 @@ import React from "react";
 import HeaderComp from "./../components/HeaderComp";
 import Profile from "./../components/Profile";
 import Gain from "./../components/Gain";
-import More from "../components/More";
+import Footer1 from "../components/Footer1";
 
 const HomePage = () => {
   return (
@@ -12,7 +12,7 @@ const HomePage = () => {
         <Profile />
         <Gain />
       </div>
-      <More />
+      <Footer1 />
     </div>
   );
 };
