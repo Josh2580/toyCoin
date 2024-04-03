@@ -10,7 +10,7 @@
     @apply flex justify-between items-center;
   }
   .card-col {
-    @apply flex flex-col items-center gap-3 bg-gray-950 p-4 rounded-lg w-full;
+    @apply flex flex-col items-center gap-3 bg-gray-950 p-4 rounded-2xl w-full;
   }
 }
 /* :root {
