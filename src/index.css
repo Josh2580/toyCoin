@@ -4,16 +4,15 @@
 
 @layer components {
   .primary-btn {
-    @apply bg-indigo-900 text-white px-4 rounded-lg p-1;
+    @apply bg-blue-950 text-white px-4 rounded-lg p-1 font-semibold;
   }
   .card-row {
     @apply flex justify-between items-center;
   }
   .card-col {
-    @apply flex flex-col gap-3 bg-gray-900 p-3 rounded-lg w-max;
+    @apply flex flex-col items-center gap-3 bg-gray-950 p-4 rounded-lg w-full;
   }
 }
-
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
