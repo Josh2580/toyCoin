@@ -10,7 +10,7 @@ const OnboardingPage3 = () => {
   };
 
   return (
-    <div className="flex flex-col bg-violet-600 h-screen justify-between p-10">
+    <div className="flex flex-col bg-blue-950 h-screen justify-between p-10">
       <h2 className="text-white text-4xl text-center">
         Toy the Aggregator Dex on Ton
       </h2>
