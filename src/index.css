@@ -7,7 +7,10 @@
     @apply bg-indigo-900 text-white px-4 rounded-lg p-1;
   }
   .card-row {
-    @apply flex justify-between  items-center;
+    @apply flex justify-between items-center;
+  }
+  .card-col {
+    @apply flex flex-col gap-3 bg-gray-900 p-3 rounded-lg w-max;
   }
 }
 

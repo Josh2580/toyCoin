@@ -15,7 +15,7 @@ const Profile = () => {
         </div>
       </div>
       <div className="card-row">
-        <img src={SampleImg} className="" alt="icon" />
+        <img src={SampleImg} className="rounded-full" alt="icon" />
         <button className="primary-btn">Play for TOY</button>
       </div>
       <div className="card-row">
