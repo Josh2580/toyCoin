@@ -1,5 +1,8 @@
 import React from "react";
-import SampleImg from "../assets/sample.png";
+import HomeImg from "../assets/home1.png";
+import CheckImg from "../assets/home3.png";
+import IconImg from "../assets/home2.png";
+import ArrowImg from "../assets/arrow3.png";
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
@@ -16,13 +19,13 @@ const Profile = () => {
           <span className="p-0 m-0">Total Claimed</span>
           <span className="p-0 m-0">0.32 TOY</span>
         </div>
-        <div>
-          <span>icon</span>
-          <span>icon</span>
+        <div className="flex gap-3 items-center">
+          <img src={IconImg} alt="check icon image" className="icon-img" />
+          <img src={ArrowImg} alt="check icon image" className="arrow-img " />
         </div>
       </div>
       <div className="card-row">
-        <img src={SampleImg} className="rounded-full" alt="icon" />
+        <img src={HomeImg} className=" profile-img" alt="icon" />
         <button onClick={() => ClaimHandler()} className="primary-btn">
           Play for TOY
         </button>
@@ -32,8 +35,8 @@ const Profile = () => {
         <p>See All icon</p>
       </div>
       <div className="flex gap-2 items-center">
-        <div className="bg-yellow-800 w-max">
-          <p>ICON</p>
+        <div className=" w-max">
+          <img src={CheckImg} alt="check icon image" className="icon-img" />
         </div>
         <div className="flex flex-1 flex-col  w-max ">
           <p>Claim</p>

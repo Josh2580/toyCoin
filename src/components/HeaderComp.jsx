@@ -1,9 +1,10 @@
 import React from "react";
+import LogoImg from "../assets/logo.png";
 
 const HeaderComp = () => {
   return (
     <div className=" card-row ">
-      <h1 className="text-2xl">Logo</h1>
+      <img src={LogoImg} className="logo-img" alt="Logo Images" />
       <button className="primary-btn">Connect Wallet</button>
     </div>
   );
