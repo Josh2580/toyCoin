@@ -2,6 +2,7 @@ import React from "react";
 import EarnImg from "../assets/earn.png";
 import BoostImg from "../assets/homeBoost.png";
 import { useNavigate } from "react-router-dom";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const Gain = () => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ const Gain = () => {
         </button>
       </div>
       <div>
-        <p>icon</p>
+        <FaArrowRightLong size={30} />
       </div>
       <div onClick={() => NavHandler("boost")} className="card-col">
         <img src={BoostImg} alt="Earn Image" className="rounded-full w-20" />

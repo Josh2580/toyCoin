@@ -31,6 +31,12 @@ const EarnPage = () => {
     <div className=" h-screen flex flex-col gap-4 p-6 justify-between bg-gray-100">
       <HeaderComp />
 
+      <div>
+        <p className="text-center font-semibold text-gray-400">Your Balance</p>
+        <p className="text-center font-bold text-3xl">1.320098 TOY</p>
+        <p className="text-center text-blue-500 font-semibold">How it works</p>
+      </div>
+
       <Task color="bg-pink-100" />
       <Task color="bg-green-100" />
       <Task color="bg-pink-100" />

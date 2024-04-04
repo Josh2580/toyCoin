@@ -4,6 +4,7 @@ import CheckImg from "../assets/home3.png";
 import IconImg from "../assets/homeBoost.png";
 import ArrowImg from "../assets/arrow3.png";
 import { useNavigate } from "react-router-dom";
+import { IoIosArrowForward } from "react-icons/io";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -21,7 +22,8 @@ const Profile = () => {
         </div>
         <div className="flex gap-3 items-center">
           <img src={IconImg} alt="check icon image" className="icon-img" />
-          <img src={ArrowImg} alt="check icon image" className="arrow-img " />
+          {/* <img src={ArrowImg} alt="check icon image" className="arrow-img " /> */}
+          <IoIosArrowForward size={20} />;
         </div>
       </div>
       <div className="card-row">
