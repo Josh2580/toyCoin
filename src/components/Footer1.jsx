@@ -18,7 +18,10 @@ const Footer1 = () => {
         <img src={BotImg} alt="Earn Image" className="icon-img" />
         <p>Bot</p>
       </div>
-      <div className=" card-col gap-0 border-l border-gray-400 rounded-none bg-transparent">
+      <div
+        onClick={() => NavHandler("app")}
+        className=" card-col gap-0 border-l border-gray-400 rounded-none bg-transparent"
+      >
         <img src={AppsImg} alt="Earn Image" className="icon-img" />
         <p>Apps</p>
       </div>
