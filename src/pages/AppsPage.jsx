@@ -6,44 +6,52 @@ import Toy2Img from "../assets/Toycaser.png";
 
 const AppsPage = () => {
   return (
-    <div className=" h-screen flex flex-col gap-8 p-6 justify-between bg-gray-100">
-      <HeaderComp />
-
+    <div className=" h-screen flex flex-col gap-12 p-6 justify-between bg-gray-100">
       <div>
-        <p className="text-center font-bold text-3xl">Apps</p>
-        <p className="text-center text-blue-500 font-semibold">
-          Check out other apps on Toy
-        </p>
-      </div>
-      <div
-        onClick={() => NavHandler("boost")}
-        className="card-col relative h-44 justify-end gap-4 pb-7"
-      >
-        <img
-          className=" absolute rounded-full w-24 -top-12"
-          src={Toy1Img}
-          alt="Toy Cash Image"
-        />
-        <p className="text-center font-bold text-3xl text-green-300">TOY DEX</p>
+        <HeaderComp />
 
-        <button className="primary-btn bg-green-300 w-full font-bold text-gray-950">
-          Coming Soon
-        </button>
+        <div>
+          <p className="text-center font-bold text-3xl pt-3">Apps</p>
+          <p className="text-center text-blue-500 font-semibold">
+            Check out other apps on Toy
+          </p>
+        </div>
       </div>
-      <div
-        onClick={() => NavHandler("boost")}
-        className="card-col relative h-44 justify-end gap-4 pb-7"
-      >
-        <img
-          className=" absolute rounded-full w-24 -top-12"
-          src={Toy2Img}
-          alt="Toy Cash Image"
-        />
-        <p className="text-center font-bold text-3xl text-green-300">TOY DEX</p>
+      <div className="flex flex-col gap-12">
+        <div
+          onClick={() => NavHandler("boost")}
+          className="card-col relative h-40 justify-end gap-3"
+        >
+          <img
+            className=" absolute rounded-full w-20 -top-8"
+            src={Toy1Img}
+            alt="Toy Cash Image"
+          />
+          <p className="text-center font-bold text-2xl text-green-300">
+            TOY DEX
+          </p>
 
-        <button className="primary-btn bg-green-300 w-full font-bold text-gray-950">
-          Coming Soon
-        </button>
+          <button className="primary-btn bg-green-300 w-full font-bold text-gray-950">
+            Coming Soon
+          </button>
+        </div>
+        <div
+          onClick={() => NavHandler("boost")}
+          className="card-col relative h-40 justify-end gap-3"
+        >
+          <img
+            className=" absolute rounded-full w-20 -top-8"
+            src={Toy2Img}
+            alt="Toy Cash Image"
+          />
+          <p className="text-center font-bold text-2xl text-green-300">
+            TOY LAUNCH PAD
+          </p>
+
+          <button className="primary-btn bg-green-300 w-full font-bold text-gray-950">
+            Coming Soon
+          </button>
+        </div>
       </div>
       <Footer2 />
     </div>
