@@ -10,19 +10,19 @@ const Footer1 = () => {
   };
 
   return (
-    <div className="card-row gap-2 bg-pink-200 p-2">
+    <div className="card-row h-20 gap-2 bg-pink-200 py-1">
       <div
         onClick={() => NavHandler("bot")}
         className="card-col bg-transparent  gap-0 "
       >
-        <img src={BotImg} alt="Earn Image" className="icon-img" />
+        <img src={BotImg} alt="Earn Image" className="icon-img h-8 w-8" />
         <p>Bot</p>
       </div>
       <div
         onClick={() => NavHandler("app")}
         className=" card-col gap-0 border-l border-gray-400 rounded-none bg-transparent"
       >
-        <img src={AppsImg} alt="Earn Image" className="icon-img" />
+        <img src={AppsImg} alt="Earn Image" className="icon-img h-8 w-8" />
         <p>Apps</p>
       </div>
     </div>
