@@ -30,7 +30,7 @@ const MyTimer = ({ expiryTimestamp }) => {
         {/* <button onClick={start}>Start</button>
         <button onClick={pause}>Pause</button>
         <button onClick={resume}>Resume</button> */}
-        <button
+        {/* <button
           className="text-center  w-full"
           onClick={() => {
             // Restarts to 5 minutes timer
@@ -40,7 +40,7 @@ const MyTimer = ({ expiryTimestamp }) => {
           }}
         >
           Restart
-        </button>
+        </button> */}
       </div>
     </div>
   );
