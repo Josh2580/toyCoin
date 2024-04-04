@@ -39,9 +39,9 @@ const EarnPage = () => {
 
       <Task color="bg-pink-100" />
       <Task color="bg-green-100" />
-      <Task color="bg-pink-100" />
-      <Task color="bg-blue-100" />
       <Task color="bg-yellow-100" />
+      <Task color="bg-violet-100" />
+      <Task color="bg-pink-100" />
       <Footer2 />
     </div>
   );

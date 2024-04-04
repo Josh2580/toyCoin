@@ -11,10 +11,11 @@ import ErrorPage from "./pages/routes/ErrorPage";
 import OnboardingPage3 from "./pages/OnboardingPage3";
 import HomePage from "./pages/HomePage";
 import EarnPage from "./pages/EarnPage";
-import BoostPage from "./pages/BoostPage";
+import BotPage from "./pages/BotPage";
 import BotSuccessPage from "./pages/BotSuccessPage";
 import BotFailedPage from "./pages/BotFailedPage";
 import ClaimPage from "./pages/ClaimPage";
+import BoostPage from "./pages/BoostPage";
 
 const App = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +24,7 @@ const App = createBrowserRouter(
       <Route path="/home" element={<HomePage />} />
       <Route path="/claim" element={<ClaimPage />} />
       <Route path="/earn" element={<EarnPage />} />
+      <Route path="/bot" element={<BotPage />} />
       <Route path="/boost" element={<BoostPage />} />
       <Route path="/bot-success" element={<BotSuccessPage />} />
       <Route path="/bot-failed" element={<BotFailedPage />} />
