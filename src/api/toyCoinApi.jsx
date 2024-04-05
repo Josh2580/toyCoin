@@ -2,28 +2,31 @@
 import { rootApi } from "./rootApi";
 
 // Define a service using a base URL and expected endpoints
-export const mineApi = rootApi.injectEndpoints({
+export const toyCoinApi = rootApi.injectEndpoints({
   endpoints: (builder) => ({
-    getMine: builder.query({
-      query: () => `coin/`,
+    getToyCoin: builder.query({
+      query: () => `toycoin/`,
     }),
-    getMineById: builder.query({
-      query: (id) => `coin/${id}/`,
-      providesTags: (result, error, id) => [{ type: "Mining", id }],
+    getToyCoinById: builder.query({
+      query: (id) => `toycoin/${id}/`,
+      providesTags: (result, error, id) => [{ type: "ToyCoin", id }],
     }),
     spinById: builder.mutation({
       // note: an optional `queryFn` may be used in place of `query`
       query: ({ id, formData }) => ({
-        url: `coin/${id}/`,
+        url: `toycoin/${id}/`,
         method: "PATCH",
         body: formData,
       }),
-      invalidatesTags: (result, error, { id }) => [{ type: "Mining", id }],
+      invalidatesTags: (result, error, { id }) => [{ type: "ToyCoin", id }],
     }),
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetMineQuery, useGetMineByIdQuery, useSpinByIdMutation } =
-  mineApi;
+export const {
+  useGetToyCoinQuery,
+  useGetToyCoinByIdQuery,
+  useSpinByIdMutation,
+} = toyCoinApi;

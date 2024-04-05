@@ -5,9 +5,16 @@ import IconImg from "../assets/homeBoost.png";
 import ArrowImg from "../assets/arrow3.png";
 import { useNavigate } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
+import { useGetToyCoinByIdQuery } from "../api/toyCoinApi";
 
 const Profile = () => {
   const navigate = useNavigate();
+  const { data, isError, error, isLoading, isSuccess } =
+    useGetToyCoinByIdQuery(1);
+  let date = isSuccess && new Date(data.launch_date);
+  // console.log(date.getDate());
+  // isSuccess && console.log(data.launch_date);
+  // isError && console.log(error);
 
   const ClaimHandler = () => {
     navigate("/claim");
@@ -18,12 +25,15 @@ const Profile = () => {
       <div className="card-row ">
         <div className=" flex p-0 m-0 flex-col gap-0 ">
           <span className="p-0 m-0">Total Claimed</span>
-          <span className="p-0 m-0">0.32 TOY</span>
+          <span className="p-0 m-0">
+            {" "}
+            {isSuccess && data.quantity_mined} TOY
+          </span>
         </div>
-        <div className="flex gap-3 items-center">
+        <div className="flex gap-2 items-center">
           <img src={IconImg} alt="check icon image" className="icon-img" />
           {/* <img src={ArrowImg} alt="check icon image" className="arrow-img " /> */}
-          <IoIosArrowForward size={20} />;
+          <IoIosArrowForward size={20} />
         </div>
       </div>
       <div className="card-row">
@@ -33,8 +43,8 @@ const Profile = () => {
         </button>
       </div>
       <div className="card-row">
-        <p>Recent Transactions</p>
-        <p>See All icon</p>
+        <p>Launch Date</p>
+        <p>Count Down</p>
       </div>
       <div className="flex gap-2 items-center">
         <div className=" w-max">
