@@ -26,7 +26,7 @@ const Profile = () => {
     navigate("/claim");
   };
 
-  isSuccess && console.log(time);
+  // isSuccess && console.log(time);
 
   useEffect(() => {
     isSuccess && setMyData(data);

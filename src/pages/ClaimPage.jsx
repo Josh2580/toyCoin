@@ -72,7 +72,7 @@ const ClaimPage = () => {
       if (result) {
         setFirstClicked(result.first_click);
         setLastClickedTime(result.time_clicked);
-        console.log("updated");
+        // console.log("updated");
         navigate("/home");
       }
     } else {
