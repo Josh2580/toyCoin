@@ -37,7 +37,7 @@ const MyTimer = ({ expiryTimestamp }) => {
         <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:
         <span>{seconds}</span>
       </div>
-      <p>{isRunning ? "In Progress" : "Pls Claim"}</p>
+      <p>{isRunning ? "Now In Progress" : "Pls Claim"}</p>
       {/* <button onClick={start}>Start</button>
       <button onClick={pause}>Pause</button>
       <button onClick={resume}>Resume</button>

@@ -16,7 +16,7 @@ const ClaimPage = () => {
   const notify = () => toast("In Progress");
   const time = new Date();
 
-  //   time.setSeconds(time.getSeconds() + 600); // 10 minutes timer
+  time.setSeconds(time.getSeconds() + 600); // 10 minutes timer
 
   const { data, error, isLoading, isSuccess } = useGetToyCoinByIdQuery(1);
   //   isSuccess && console.log(data);
@@ -52,33 +52,7 @@ const ClaimPage = () => {
   //   console.log(lastClickedTime);
 
   const SpinHandler = async () => {
-    const now = new Date();
-    const secondsDiff = (now - new Date(lastClickedTime)) / (1000 * 1);
-    let isTime = Math.floor(Math.min(secondsDiff, 60));
-    let myTime = maxTime - isTime;
-
-    if (firstClicked || myTime == 0) {
-      const formData = new FormData();
-      let timeCLick = now.toISOString();
-      formData.append("time_clicked", timeCLick);
-      formData.append("quantity_mined", Number(mineData) + 100);
-
-      if (firstClicked) {
-        formData.append("first_click", false);
-      }
-      setIsFull(false);
-
-      const result = await spinNow({ formData, id: 1 }).unwrap();
-      if (result) {
-        setFirstClicked(result.first_click);
-        setLastClickedTime(result.time_clicked);
-        // console.log("updated");
-        navigate("/home");
-      }
-    } else {
-      console.log("In Progress");
-      notify();
-    }
+    console.log("time");
   };
 
   useEffect(() => {
@@ -116,7 +90,7 @@ const ClaimPage = () => {
           <img src={CheckImg} className="icon-img " alt="Check Image" />
         </div>
         <div className="flex flex-1 flex-col  w-10">
-          {PageIsTime && data && <MyTimer expiryTimestamp={time} />}
+          {data && <MyTimer expiryTimestamp={time} />}
         </div>
         <button onClick={() => SpinHandler()} className="primary-btn">
           Claim Toy
