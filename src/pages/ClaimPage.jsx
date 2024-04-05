@@ -116,7 +116,7 @@ const ClaimPage = () => {
           <img src={CheckImg} className="icon-img " alt="Check Image" />
         </div>
         <div className="flex flex-1 flex-col  w-10">
-          {PageIsTime && <MyTimer expiryTimestamp={time} />}
+          {PageIsTime && data && <MyTimer expiryTimestamp={time} />}
         </div>
         <button onClick={() => SpinHandler()} className="primary-btn">
           Claim Toy

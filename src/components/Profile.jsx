@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HomeImg from "../assets/home1.png";
 import CheckImg from "../assets/home3.png";
 import IconImg from "../assets/homeBoost.png";
@@ -6,19 +6,32 @@ import ArrowImg from "../assets/arrow3.png";
 import { useNavigate } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 import { useGetToyCoinByIdQuery } from "../api/toyCoinApi";
+import MyTimer from "./MyTimer";
 
 const Profile = () => {
   const navigate = useNavigate();
   const { data, isError, error, isLoading, isSuccess } =
     useGetToyCoinByIdQuery(1);
-  let date = isSuccess && new Date(data.launch_date);
-  // console.log(date.getDate());
+  // const time = new Date(data.launch_date);
+
+  const [myData, setMyData] = useState();
+  const [time, setTime] = useState();
+
+  // let date = isSuccess && new Date(data.launch_date);
+
   // isSuccess && console.log(data.launch_date);
   // isError && console.log(error);
 
   const ClaimHandler = () => {
     navigate("/claim");
   };
+
+  isSuccess && console.log(time);
+
+  useEffect(() => {
+    isSuccess && setMyData(data);
+    isSuccess && setTime(new Date(data.launch_date));
+  }, [data]);
 
   return (
     <div className="bg-yellow-100 px-4 py-2 rounded-2xl">
@@ -50,13 +63,9 @@ const Profile = () => {
         <div className=" w-max">
           <img src={CheckImg} alt="check icon image" className="icon-img" />
         </div>
-        <div className="flex flex-1 flex-col  w-max ">
-          <p>Claim</p>
-          <p>Date</p>
-        </div>
+        <div className="flex flex-1 flex-col  w-max ">01-Aug-2024</div>
         <div className="flex flex-1 flex-col  w-max  items-end">
-          <p>+0.0450</p>
-          <p>---</p>
+          {isSuccess && myData && <MyTimer expiryTimestamp={time} />}
         </div>
       </div>
     </div>
