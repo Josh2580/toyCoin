@@ -10,6 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useGetToyCoinByIdQuery, useSpinByIdMutation } from "../api/toyCoinApi";
 import { useNavigate } from "react-router-dom";
+import ProgressBar from "@ramonak/react-progress-bar";
 
 const ClaimPage = () => {
   const navigate = useNavigate();
@@ -31,56 +32,14 @@ const ClaimPage = () => {
     },
   ] = useSpinByIdMutation();
 
-  const [mineData, setMineData] = useState({});
-  const [lastClickedTime, setLastClickedTime] = useState();
-  const [firstClicked, setFirstClicked] = useState();
-  const [isMyTime, setIsMyTime] = useState(true);
-  const [isFull, setIsFull] = useState(false);
-
-  let remainTime;
-  const maxTime = 60;
-
-  const PageNow = new Date();
-  const PageSecondsDiff = (PageNow - new Date(lastClickedTime)) / (1000 * 1);
-  let PageIsTime = Math.floor(Math.min(PageSecondsDiff, 60));
-  let PageMyTime = maxTime - PageIsTime;
-
-  PageIsTime && time.setSeconds(time.getSeconds() + PageMyTime); // 10 minutes timer
-
-  //   PageIsTime && console.log(PageMyTime);
-  //   console.log(firstClicked);
-  //   console.log(lastClickedTime);
-
   const SpinHandler = async () => {
     console.log("time");
   };
-
-  useEffect(() => {
-    remainTime = PageMyTime;
-  }, [PageMyTime, PageSecondsDiff, PageNow, PageIsTime]);
-  //
-  useEffect(() => {
-    isSuccess && setFirstClicked(data.first_click);
-    isSuccess && setLastClickedTime(data.time_clicked);
-    isSuccess && setMineData(data.quantity_mined);
-  }, [data, isSuccess, PageIsTime]);
 
   return (
     <div className=" h-screen flex flex-col gap-4 p-6 justify-between bg-gray-100">
       <div>
         <HeaderComp />
-        <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover={false}
-          theme="light"
-        />
       </div>
       <div className=" flex items-center justify-center">
         <img src={SampleImg} className="rounded-full" alt="icon" />
@@ -90,7 +49,7 @@ const ClaimPage = () => {
           <img src={CheckImg} className="icon-img " alt="Check Image" />
         </div>
         <div className="flex flex-1 flex-col  w-10">
-          {data && <MyTimer expiryTimestamp={time} />}
+          <ProgressBar completed={60} />
         </div>
         <button onClick={() => SpinHandler()} className="primary-btn">
           Claim Toy
