@@ -7,11 +7,16 @@ import { useNavigate } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 import { useGetToyCoinByIdQuery } from "../api/toyCoinApi";
 import MyTimer from "./MyTimer";
+import { useParams } from "react-router-dom";
 
 const Profile = () => {
   const navigate = useNavigate();
+  const { telegram_id } = useParams();
+
+  const [tele_id, set_tele_id] = useState();
+
   const { data, isError, error, isLoading, isSuccess } =
-    useGetToyCoinByIdQuery(1);
+    useGetToyCoinByIdQuery(telegram_id);
   // const time = new Date(data.launch_date);
 
   const [myData, setMyData] = useState();
@@ -31,6 +36,9 @@ const Profile = () => {
   useEffect(() => {
     isSuccess && setMyData(data);
     isSuccess && setTime(new Date(data.launch_date));
+    let a = localStorage.getItem("telegram-id");
+    set_tele_id(a);
+    tele_id && console.log(tele_id);
   }, [data]);
 
   return (
@@ -40,7 +48,7 @@ const Profile = () => {
           <span className="p-0 m-0">Total Claimed</span>
           <span className="p-0 m-0">
             {" "}
-            {isSuccess && data.quantity_mined} TOY
+            {isSuccess && data.quantity_mined} TOY.
           </span>
         </div>
         <div className="flex gap-2 items-center">

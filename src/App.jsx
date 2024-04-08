@@ -23,6 +23,7 @@ const App = createBrowserRouter(
     <Route path="/" element={<Root />}>
       <Route index element={<OnboardingPage3 />} />
       <Route path="/home" element={<HomePage />} />
+      <Route path="/home/:telegram_id" element={<HomePage />} />
       <Route path="/claim" element={<ClaimPage />} />
       <Route path="/earn" element={<EarnPage />} />
       <Route path="/app" element={<AppsPage />} />
