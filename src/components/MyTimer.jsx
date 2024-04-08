@@ -4,7 +4,6 @@ import { useTimer } from "react-timer-hook";
 // import { TimeModelValueView } from "../TimeModelValueView/TimeModelValueView";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useSpinByIdMutation, useGetToyCoinByIdQuery } from "../api/toyCoinApi";
 
 const timer = createTimeModel({
   // start from 10 seconds

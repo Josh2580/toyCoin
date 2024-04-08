@@ -11,7 +11,7 @@ export const toyCoinApi = rootApi.injectEndpoints({
       query: (id) => `toycoin/${id}/`,
       providesTags: (result, error, id) => [{ type: "ToyCoin", id }],
     }),
-    spinById: builder.mutation({
+    claimToyById: builder.mutation({
       // note: an optional `queryFn` may be used in place of `query`
       query: ({ id, formData }) => ({
         url: `toycoin/${id}/`,
@@ -28,5 +28,5 @@ export const toyCoinApi = rootApi.injectEndpoints({
 export const {
   useGetToyCoinQuery,
   useGetToyCoinByIdQuery,
-  useSpinByIdMutation,
+  useClaimToyByIdMutation,
 } = toyCoinApi;
