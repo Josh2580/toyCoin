@@ -3,7 +3,7 @@ import HeaderComp from "../components/HeaderComp";
 import Footer2 from "../components/Footer2";
 
 import CheckImg from "../assets/home3.png";
-import SampleImg from "../assets/sample.png";
+import SampleImg from "../assets/claimImg.png";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -17,7 +17,15 @@ import ProgressBar from "@ramonak/react-progress-bar";
 const ClaimPage = () => {
   const notify = () => toast("In Progress");
 
-  const { data, error, isLoading, isSuccess } = useGetToyCoinByIdQuery(1);
+  const [tele_id, set_tele_id] = useState();
+
+  const { data, error, isLoading, isSuccess } = useGetToyCoinByIdQuery(tele_id);
+  // From Local Storage
+  useEffect(() => {
+    let a = localStorage.getItem("telegram-id");
+    set_tele_id(a);
+    tele_id && console.log(tele_id);
+  }, [data, tele_id]);
 
   const [claimNow] = useClaimToyByIdMutation();
 
@@ -62,7 +70,6 @@ const ClaimPage = () => {
       // console.log("breaking");
     };
   }, [data]);
-  // }, [data]);
 
   const ClaimHandler = async () => {
     // console.log("handler clicked");
@@ -80,7 +87,7 @@ const ClaimPage = () => {
       formData.append("time_clicked", timeCLick);
       formData.append("quantity_mined", Number(mineData) + 100);
       // console.log("its now");
-      const result = await claimNow({ formData, id: 1 }).unwrap();
+      const result = await claimNow({ formData, id: tele_id }).unwrap();
       if (result) {
         // setFirstClicked(result.first_click);
         //         setLastClickedTime(result.time_clicked);
@@ -98,7 +105,7 @@ const ClaimPage = () => {
         <HeaderComp />
       </div>
       <div className=" flex items-center justify-center">
-        <img src={SampleImg} className="rounded-full" alt="icon" />
+        <img src={SampleImg} className="w-60 h-60" alt="icon" />
       </div>
       <div className="flex gap-2 items-center bg-pink-100 p-4 rounded-xl">
         <div className=" w-max">
