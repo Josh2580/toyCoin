@@ -49,7 +49,7 @@ const Profile = () => {
           <span className="p-0 m-0">Total Claimed</span>
           <span className="p-0 m-0">
             {" "}
-            {isSuccess && data.quantity_mined} TO.Y
+            {isSuccess ? data.quantity_mined : 0.0} TOY
           </span>
         </div>
         <div className="flex gap-2 items-center">

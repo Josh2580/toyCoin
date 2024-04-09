@@ -20,6 +20,15 @@ export const toyCoinApi = rootApi.injectEndpoints({
       }),
       invalidatesTags: (result, error, { id }) => [{ type: "ToyCoin", id }],
     }),
+    createToy: builder.mutation({
+      // note: an optional `queryFn` may be used in place of `query`
+      query: ({ formData }) => ({
+        url: `toycoin/`,
+        method: "POST",
+        body: formData,
+      }),
+      invalidatesTags: (result, error, { id }) => [{ type: "ToyCoin", id }],
+    }),
   }),
 });
 
@@ -29,4 +38,5 @@ export const {
   useGetToyCoinQuery,
   useGetToyCoinByIdQuery,
   useClaimToyByIdMutation,
+  useCreateToyMutation,
 } = toyCoinApi;

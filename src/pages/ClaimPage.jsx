@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import {
   useGetToyCoinByIdQuery,
   useClaimToyByIdMutation,
+  useCreateToyMutation,
 } from "../api/toyCoinApi";
 import { useNavigate } from "react-router-dom";
 import ProgressBar from "@ramonak/react-progress-bar";
@@ -20,6 +21,8 @@ const ClaimPage = () => {
   const [tele_id, set_tele_id] = useState();
 
   const { data, error, isLoading, isSuccess } = useGetToyCoinByIdQuery(tele_id);
+  // console.log("error: ", er
+
   // From Local Storage
   useEffect(() => {
     let a = localStorage.getItem("telegram-id");
@@ -28,6 +31,7 @@ const ClaimPage = () => {
   }, [data, tele_id]);
 
   const [claimNow] = useClaimToyByIdMutation();
+  const [createToy] = useCreateToyMutation();
 
   const [isTime, setIsTime] = useState(0);
   const [timeClicked, setTimeClicked] = useState();
@@ -72,30 +76,38 @@ const ClaimPage = () => {
   }, [data]);
 
   const ClaimHandler = async () => {
-    // console.log("handler clicked");
-    // console.log("elapsedTime: ", elapsedTime);
-    // console.log("hourInMilliseconds: ", hourInMilliseconds);
-    // console.log("timeClicked: ", timeClicked);
-    // console.log("myPercent: ", myPercent);
-
-    if (elapsedTime >= hourInMilliseconds) {
-      // setMyPercent(0);
-
+    if (error.status == 404) {
+      console.log("create a coin");
       const now = new Date();
       const formData = new FormData();
       let timeCLick = now.toISOString();
       formData.append("time_clicked", timeCLick);
-      formData.append("quantity_mined", Number(mineData) + 100);
+      formData.append("telegram_id", tele_id);
       // console.log("its now");
-      const result = await claimNow({ formData, id: tele_id }).unwrap();
+      const result = await createToy({ formData }).unwrap();
       if (result) {
-        // setFirstClicked(result.first_click);
-        //         setLastClickedTime(result.time_clicked);
-        // console.log("updated");
-        // console.log(result);
+        console.log(result);
       }
     } else {
-      // console.log("not yet time");
+      if (elapsedTime >= hourInMilliseconds) {
+        // setMyPercent(0);
+
+        const now = new Date();
+        const formData = new FormData();
+        let timeCLick = now.toISOString();
+        formData.append("time_clicked", timeCLick);
+        formData.append("quantity_mined", Number(mineData) + 100);
+        // console.log("its now");
+        const result = await claimNow({ formData, id: tele_id }).unwrap();
+        if (result) {
+          // setFirstClicked(result.first_click);
+          //         setLastClickedTime(result.time_clicked);
+          // console.log("updated");
+          // console.log(result);
+        }
+      } else {
+        // console.log("not yet time");
+      }
     }
   };
 
