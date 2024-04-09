@@ -13,10 +13,11 @@ const Profile = () => {
   const navigate = useNavigate();
   const { telegram_id } = useParams();
 
-  const [tele_id, set_tele_id] = useState();
+  const [id, set_id] = useState();
+  console.log(id);
 
   const { data, isError, error, isLoading, isSuccess } =
-    useGetToyCoinByIdQuery(tele_id);
+    useGetToyCoinByIdQuery(id);
   // const time = new Date(data.launch_date);
 
   const [myData, setMyData] = useState();
@@ -37,9 +38,9 @@ const Profile = () => {
     isSuccess && setMyData(data);
     isSuccess && setTime(new Date(data.launch_date));
     let a = localStorage.getItem("telegram-id");
-    set_tele_id(a);
-    tele_id && console.log(tele_id);
-  }, [data, tele_id]);
+    set_id(a);
+    id && console.log(id);
+  }, [data, id]);
 
   return (
     <div className="bg-yellow-100 px-4 py-2 rounded-2xl">
@@ -48,7 +49,7 @@ const Profile = () => {
           <span className="p-0 m-0">Total Claimed</span>
           <span className="p-0 m-0">
             {" "}
-            {isSuccess && data.quantity_mined} TOY
+            {isSuccess && data.quantity_mined} TO.Y
           </span>
         </div>
         <div className="flex gap-2 items-center">
