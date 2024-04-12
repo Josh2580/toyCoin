@@ -36,14 +36,14 @@ const ClaimPage = () => {
       <div className=" flex items-center justify-center">
         <img src={SampleImg} className="w-60 h-60" alt="icon" />
       </div>
-      {data && (
-        <ClaimToy
-          data={data}
-          isSuccess={isSuccess}
-          error={error}
-          tele_id={telegram_id}
-        />
-      )}
+      {/* // {data && ( */}
+      <ClaimToy
+        data={data}
+        isSuccess={isSuccess}
+        error={error}
+        tele_id={telegram_id}
+      />
+      {/* // )} */}
       <Footer2 />
     </div>
   );
