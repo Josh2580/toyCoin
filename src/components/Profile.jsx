@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import HomeImg from "../assets/home1.png";
+import HomeImg from "../assets/home.png";
 import CheckImg from "../assets/home3.png";
 import IconImg from "../assets/homeBoost.png";
 import ArrowImg from "../assets/arrow3.png";

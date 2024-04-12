@@ -29,7 +29,7 @@ const Task = ({ color }) => {
 const EarnPage = () => {
   return (
     <div className=" h-screen flex flex-col gap-4 p-6 justify-between bg-gray-100">
-      <HeaderComp />
+      <HeaderComp visible={true} />
 
       <div>
         <p className="text-center font-semibold text-gray-400">Your Balance</p>

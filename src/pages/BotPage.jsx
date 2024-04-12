@@ -7,7 +7,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 const BotPage = () => {
   return (
     <div className=" h-screen flex flex-col gap-4 p-6 justify-between bg-gray-100">
-      <HeaderComp />
+      <HeaderComp visible={true} />
       <div>
         <h2 className="text-5xl text-center">Mine by Shaking Box</h2>
         <p className=" text-center">

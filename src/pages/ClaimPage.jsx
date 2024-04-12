@@ -31,7 +31,7 @@ const ClaimPage = () => {
   return (
     <div className=" h-screen flex flex-col gap-4 p-6 justify-between bg-gray-100">
       <div>
-        <HeaderComp />
+        <HeaderComp visible={true} />
       </div>
       <div className=" flex items-center justify-center">
         <img src={SampleImg} className="w-60 h-60" alt="icon" />

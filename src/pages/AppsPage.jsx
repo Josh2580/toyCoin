@@ -8,7 +8,7 @@ const AppsPage = () => {
   return (
     <div className=" h-screen flex flex-col gap-12 p-6 justify-between bg-gray-100">
       <div>
-        <HeaderComp />
+        <HeaderComp visible={true} />
 
         <div>
           <p className="text-center font-bold text-3xl pt-3">Apps</p>
