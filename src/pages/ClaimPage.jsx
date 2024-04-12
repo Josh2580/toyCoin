@@ -2,114 +2,31 @@ import React, { useState, useEffect } from "react";
 import HeaderComp from "../components/HeaderComp";
 import Footer2 from "../components/Footer2";
 
-import CheckImg from "../assets/home3.png";
 import SampleImg from "../assets/claimImg.png";
 
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import {
   useGetToyCoinByIdQuery,
   useClaimToyByIdMutation,
   useCreateToyMutation,
 } from "../api/toyCoinApi";
-import { useNavigate } from "react-router-dom";
-import ProgressBar from "@ramonak/react-progress-bar";
+
+import ClaimToy from "../components/ClaimToy";
 
 const ClaimPage = () => {
-  const notify = () => toast("In Progress");
+  const [telegram_id, set_telegram_id] = useState();
+  // console.log(telegram_id);
 
-  const [tele_id, set_tele_id] = useState();
+  const { data, isError, error, isLoading, isSuccess } =
+    useGetToyCoinByIdQuery(telegram_id);
 
-  const { data, error, isLoading, isSuccess } = useGetToyCoinByIdQuery(tele_id);
-  // console.log("error: ", er
+  // isSuccess && console.log(data);
+  isError && console.log(error);
 
-  // From Local Storage
+  //   From Local Storage
   useEffect(() => {
     let a = localStorage.getItem("telegram-id");
-    set_tele_id(a);
-    tele_id && console.log(tele_id);
-  }, [data, tele_id]);
-
-  const [claimNow] = useClaimToyByIdMutation();
-  const [createToy] = useCreateToyMutation();
-
-  const [isTime, setIsTime] = useState(0);
-  const [timeClicked, setTimeClicked] = useState();
-  const [elapsedTime, setElapsedTime] = useState();
-  const [mineData, setMineData] = useState({});
-  const [myTime, setMyTime] = useState();
-  const [myPercent, setMyPercent] = useState(0);
-
-  const hourInMilliseconds = 3600; // 60 minutes * 60 seconds * 1000 milliseconds
-  const updateInterval = 1000; // Update every second
-
-  // const startTime = Date.now(timeClicked);
-  // setting the percentage
-  const progressPercentage = (elapsedTime / hourInMilliseconds) * 100;
-
-  // useEffect for time and percent
-  useEffect(() => {
-    setTimeout(() => {
-      // Current time minus last clicked  time divided by 1000 to get each second count
-      setElapsedTime((new Date() - timeClicked) / 1000);
-      setMyTime(new Date());
-      if (progressPercentage >= 100) {
-        setMyPercent(100);
-      } else {
-        setMyPercent(progressPercentage);
-      }
-    }, 100);
-  }, [data, elapsedTime, myTime]);
-
-  useEffect(() => {
-    isSuccess && setTimeClicked(new Date(data.time_clicked));
-    isSuccess && setMineData(data.quantity_mined);
-
-    setTimeout(() => {
-      if (elapsedTime <= hourInMilliseconds) {
-        console.log("value");
-      }
-    }, 1000);
-    return () => {
-      // console.log("breaking");
-    };
-  }, [data]);
-
-  const ClaimHandler = async () => {
-    if (error.status == 404) {
-      console.log("create a coin");
-      const now = new Date();
-      const formData = new FormData();
-      let timeCLick = now.toISOString();
-      formData.append("time_clicked", timeCLick);
-      formData.append("telegram_id", tele_id);
-      // console.log("its now");
-      const result = await createToy({ formData }).unwrap();
-      if (result) {
-        console.log(result);
-      }
-    } else {
-      if (elapsedTime >= hourInMilliseconds) {
-        // setMyPercent(0);
-
-        const now = new Date();
-        const formData = new FormData();
-        let timeCLick = now.toISOString();
-        formData.append("time_clicked", timeCLick);
-        formData.append("quantity_mined", Number(mineData) + 100);
-        // console.log("its now");
-        const result = await claimNow({ formData, id: tele_id }).unwrap();
-        if (result) {
-          // setFirstClicked(result.first_click);
-          //         setLastClickedTime(result.time_clicked);
-          // console.log("updated");
-          // console.log(result);
-        }
-      } else {
-        // console.log("not yet time");
-      }
-    }
-  };
+    set_telegram_id(a);
+  }, [data, telegram_id]);
 
   return (
     <div className=" h-screen flex flex-col gap-4 p-6 justify-between bg-gray-100">
@@ -119,23 +36,14 @@ const ClaimPage = () => {
       <div className=" flex items-center justify-center">
         <img src={SampleImg} className="w-60 h-60" alt="icon" />
       </div>
-      <div className="flex gap-2 items-center bg-pink-100 p-4 rounded-xl">
-        <div className=" w-max">
-          <img src={CheckImg} className="icon-img " alt="Check Image" />
-        </div>
-        <div className="flex flex-1 flex-col  w-10">
-          <ProgressBar
-            completed={myPercent == 100 ? myPercent : myPercent.toFixed(2)}
-            // completed={70}
-            // label={`${progress.toFixed(2)}%`}
-            // label={progress.toFixed(2)}
-            // label={`${Math.floor(progress)}%`}
-          />
-        </div>
-        <button onClick={() => ClaimHandler()} className="primary-btn">
-          Claim Toy
-        </button>
-      </div>
+      {data && (
+        <ClaimToy
+          data={data}
+          isSuccess={isSuccess}
+          error={error}
+          tele_id={telegram_id}
+        />
+      )}
       <Footer2 />
     </div>
   );

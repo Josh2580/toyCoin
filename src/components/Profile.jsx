@@ -9,38 +9,22 @@ import { useGetToyCoinByIdQuery } from "../api/toyCoinApi";
 import MyTimer from "./MyTimer";
 import { useParams } from "react-router-dom";
 
-const Profile = () => {
+const Profile = ({ telegram_id, data, isSuccess }) => {
   const navigate = useNavigate();
-  const { telegram_id } = useParams();
 
-  const [id, set_id] = useState();
-  console.log(id);
-
-  const { data, isError, error, isLoading, isSuccess } =
-    useGetToyCoinByIdQuery(id);
-  // const time = new Date(data.launch_date);
+  // console.log(telegram_id);
 
   const [myData, setMyData] = useState();
   const [time, setTime] = useState();
-
-  // let date = isSuccess && new Date(data.launch_date);
-
-  // isSuccess && console.log(data.launch_date);
-  // isError && console.log(error);
 
   const ClaimHandler = () => {
     navigate("/claim");
   };
 
-  // isSuccess && console.log(time);
-
   useEffect(() => {
     isSuccess && setMyData(data);
     isSuccess && setTime(new Date(data.launch_date));
-    let a = localStorage.getItem("telegram-id");
-    set_id(a);
-    id && console.log(id);
-  }, [data, id]);
+  }, [data]);
 
   return (
     <div className="bg-yellow-100 px-4 py-2 rounded-2xl">
