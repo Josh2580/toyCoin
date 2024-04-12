@@ -45,7 +45,7 @@ const Profile = ({ telegram_id, data, isSuccess }) => {
       <div className="card-row">
         <img src={HomeImg} className=" profile-img" alt="icon" />
         <button onClick={() => ClaimHandler()} className="primary-btn">
-          Play for TOY
+          Play for TOY..
         </button>
       </div>
       <div className="card-row">
