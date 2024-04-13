@@ -1,6 +1,6 @@
 import React from "react";
 import BotImg from "../assets/bot.png";
-import AppsImg from "../assets/apps.png";
+import AppsImg from "../assets/app.png";
 import BoostImg from "../assets/boost.png";
 import EarnImg from "../assets/earn.png";
 import { useNavigate } from "react-router-dom";

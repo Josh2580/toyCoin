@@ -1,5 +1,5 @@
 import React from "react";
-import AppsImg from "../assets/apps.png";
+import AppsImg from "../assets/app.png";
 import BotImg from "../assets/bot.png";
 import { useNavigate } from "react-router-dom";
 
