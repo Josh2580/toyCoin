@@ -20,8 +20,12 @@ const HomePage = () => {
   }, [myTelegramId, telegram_id]);
 
   // console.log(myTelegramId);
-  const { data, isError, error, isLoading, isSuccess } =
-    useGetToyCoinByIdQuery(myTelegramId);
+  const { data, isError, error, isLoading, isSuccess } = useGetToyCoinByIdQuery(
+    myTelegramId,
+    {
+      skip: !myTelegramId,
+    }
+  );
   // console.log(data);
 
   return (

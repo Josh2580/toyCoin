@@ -18,14 +18,14 @@ const Footer2 = () => {
         onClick={() => NavHandler("bot")}
         className="card-col bg-transparent  gap-0 "
       >
-        <img src={BotImg} alt="Earn Image" className="icon-img" />
+        <img src={BotImg} alt="Bot Image" className="icon-img" />
         <p>Bot</p>
       </div>
       <div
         onClick={() => NavHandler("app")}
         className=" card-col gap-0 border-l border-gray-400 rounded-none bg-transparent"
       >
-        <img src={AppsImg} alt="Earn Image" className="icon-img" />
+        <img src={AppsImg} alt="Apps Image" className="icon-img" />
         <p>Apps</p>
       </div>
       <div
@@ -39,7 +39,7 @@ const Footer2 = () => {
         onClick={() => NavHandler("boost")}
         className=" card-col gap-0 border-l border-gray-400 rounded-none bg-transparent"
       >
-        <img src={BoostImg} alt="Earn Image" className="icon-img" />
+        <img src={BoostImg} alt="Boost Image" className="icon-img" />
         <p>Boost</p>
       </div>
     </div>

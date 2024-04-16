@@ -15,7 +15,7 @@ export const taskApi = rootApi.injectEndpoints({
     addTaskById: builder.mutation({
       // note: an optional `queryFn` may be used in place of `query`
       query: ({ id, formData }) => ({
-        url: `toycoin/${id}/`,
+        url: `task/all/${id}/`,
         method: "PATCH",
         body: formData,
       }),

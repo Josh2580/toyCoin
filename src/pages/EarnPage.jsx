@@ -3,76 +3,99 @@ import HeaderComp from "../components/HeaderComp";
 import Footer2 from "../components/Footer2";
 import CheckImg from "../assets/home3.png";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 import {
   useGetToyCoinByIdQuery,
   useClaimToyByIdMutation,
 } from "../api/toyCoinApi";
-import { useGetAllTaskQuery } from "../api/taskApi";
+import { useGetAllTaskQuery, useAddTaskByIdMutation } from "../api/taskApi";
 
-const Task = ({ tsk }) => {
+const Task = ({ tsk, hasClicked, onClick }) => {
   return (
     <button
-      className={`flex justify-center gap-2 text-left ${tsk.color} p-4 rounded-xl`}
+      onClick={() => onClick(hasClicked)}
+      disabled={hasClicked}
+      className={`flex justify-center gap-2 text-left bg-blue-200 ${hasClicked && "opacity-40"} p-4 rounded-xl `}
     >
-      <div className=" w-max">
-        <img src={CheckImg} className="icon-img " alt="Check Image" />
-      </div>
-      <div className="flex flex-1 flex-col  w-10">
-        <h3 className="text-xl font-bold">Task {tsk.id}</h3>
-        <p className="text-lg leading-5 text-gray-600">{tsk.task}</p>
+      <img src={CheckImg} className="icon-img " alt="Check Image" />
+
+      <div className="flex flex-1 flex-col w-10">
+        <h3 className="text-lg font-bold">{tsk.task}</h3>
         <div className="flex pt-1 gap-1">
           <div className="w-5 h-4 bg-green-500 rounded-full"></div>
           <div className="w-5 h-4 bg-blue-500 rounded-full"></div>
           <div className="w-5 h-4 bg-pink-500 rounded-full"></div>
         </div>
       </div>
-      <FaArrowRightLong size={30} />
+      <FaArrowRightLong className="pt-1" size={20} />
     </button>
   );
 };
 
 const EarnPage = () => {
   const [telegram_id, set_telegram_id] = useState();
-  const [task_visible, set_task_visible] = useState();
+  const navigate = useNavigate();
 
-  // console.log(telegram_id);
+  // Getting Each Users coin by the telegram ID
+  const { data, isSuccess } = useGetToyCoinByIdQuery(telegram_id, {
+    skip: !telegram_id, // Skipping the get query if the telegram_id is not present
+  });
+  const [myData, setMyData] = useState();
 
-  const { data, isError, error, isLoading, isSuccess } =
-    useGetToyCoinByIdQuery(telegram_id);
+  // Task for all Users
+  const { data: taskData, isSuccess: taskIsSuccess } = useGetAllTaskQuery();
+  const [myTaskData, setMyTaskData] = useState();
 
-  const {
-    data: taskData,
-    isError: taskIsError,
-    error: taskError,
-    isLoading: taskIsLoading,
-    isSuccess: taskIsSuccess,
-  } = useGetAllTaskQuery();
+  // Perform Task
+  const [addTask] = useAddTaskByIdMutation();
 
-  useEffect(() => {
-    taskIsSuccess &&
-      isSuccess &&
-      taskData.map((tsk) => {
-        console.log(data.user);
-        let b = tsk.user.find((a) => a == data.user);
-        b && set_task_visible(true);
-      });
-
-    // return () => {
-    //   console.log("running");
-    // };
-  }, [taskData, data]);
+  // Claim extra TOY from task
+  const [claimNow] = useClaimToyByIdMutation();
 
   //   From Local Storage
+  let a;
   useEffect(() => {
-    let a = localStorage.getItem("telegram-id");
+    a = localStorage.getItem("telegram-id");
     set_telegram_id(a);
-  }, [data, telegram_id]);
+  }, [data, a, telegram_id]);
+
+  // For reflection of data's
+  useEffect(() => {
+    isSuccess && setMyData(data);
+    taskIsSuccess && setMyTaskData(taskData);
+  }, [data, taskData]);
+
+  const TaskHandler = async (hasClicked, tsk) => {
+    if (hasClicked) {
+      console.log("Task already Completed");
+    } else if (!hasClicked) {
+      console.log("Task Just Clicked");
+      let user = myData.user; // Current User
+      let id = tsk.id; // Current Task
+      const formData = new FormData();
+      formData.append("telegram_id", telegram_id);
+      let result = await addTask({ id, formData });
+      if (result) {
+        const toyFormData = new FormData();
+        let mineData = data.quantity_mined;
+        toyFormData.append("quantity_mined", Number(mineData) + 250);
+        let toyResult = await claimNow({
+          formData: toyFormData,
+          id: telegram_id,
+        }).unwrap();
+        if (toyResult) {
+          navigate(0);
+        }
+      }
+    }
+
+    // console.log(hasClicked);
+  };
 
   return (
     <div className=" h-screen flex flex-col gap-4 p-6 justify-between bg-gray-100">
       <HeaderComp visible={true} />
-
       <div>
         <p className="text-center font-semibold text-gray-400">Your Balance</p>
         <p className="text-center font-bold text-3xl">
@@ -80,11 +103,23 @@ const EarnPage = () => {
         </p>
         <p className="text-center text-blue-500 font-semibold">How it works</p>
       </div>
-      {taskIsSuccess &&
-        taskData.map((tsk, idx) => <Task key={idx} tsk={tsk} />)}
-
-      {/* <Task color="bg-violet-100" /> */}
-      {/* <Task color="bg-pink-100" /> */}
+      {myTaskData &&
+        myData &&
+        myTaskData.map((tsk, idx) => {
+          const hasClicked = tsk.user.find((a) => a == myData.user);
+          // console.log(hasClicked);
+          return (
+            // <button key={idx} onClick={() => TaskHandler()}>
+            <Task
+              key={idx}
+              onClick={() => TaskHandler(hasClicked, tsk)}
+              tsk={tsk}
+              hasClicked={hasClicked}
+            />
+            // {/* {tsk.task} */}
+            // </button>
+          );
+        })}
       <Footer2 />
     </div>
   );

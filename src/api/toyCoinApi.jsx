@@ -6,6 +6,7 @@ export const toyCoinApi = rootApi.injectEndpoints({
   endpoints: (builder) => ({
     getToyCoin: builder.query({
       query: () => `toycoin/`,
+      providesTags: ["ToyCoin"],
     }),
     getToyCoinById: builder.query({
       query: (id) => `toycoin/${id}/`,

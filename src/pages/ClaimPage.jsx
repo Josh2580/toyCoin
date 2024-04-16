@@ -16,8 +16,12 @@ const ClaimPage = () => {
   const [telegram_id, set_telegram_id] = useState();
   // console.log(telegram_id);
 
-  const { data, isError, error, isLoading, isSuccess } =
-    useGetToyCoinByIdQuery(telegram_id);
+  const { data, isError, error, isLoading, isSuccess } = useGetToyCoinByIdQuery(
+    telegram_id,
+    {
+      skip: !telegram_id,
+    }
+  );
 
   // isSuccess && console.log(data);
   isError && console.log(error);
