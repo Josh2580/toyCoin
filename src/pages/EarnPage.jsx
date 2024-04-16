@@ -77,15 +77,18 @@ const EarnPage = () => {
       formData.append("telegram_id", telegram_id);
       let result = await addTask({ id, formData });
       if (result) {
+        console.log(result.data.url);
         const toyFormData = new FormData();
         let mineData = data.quantity_mined;
-        toyFormData.append("quantity_mined", Number(mineData) + 250);
+        let quantity = result.data.quantity;
+        toyFormData.append("quantity_mined", Number(mineData) + quantity);
         let toyResult = await claimNow({
           formData: toyFormData,
           id: telegram_id,
         }).unwrap();
         if (toyResult) {
-          navigate(0);
+          // navigate(0);
+          window.location.href = result.data.url;
         }
       }
     }
