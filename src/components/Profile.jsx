@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 import { useGetToyCoinByIdQuery } from "../api/toyCoinApi";
 import MyTimer from "./MyTimer";
-import { useParams } from "react-router-dom";
+
+import { HiUsers } from "react-icons/hi";
 
 const Profile = ({ telegram_id, data, isSuccess }) => {
   const navigate = useNavigate();
@@ -17,8 +18,8 @@ const Profile = ({ telegram_id, data, isSuccess }) => {
   const [myData, setMyData] = useState();
   const [time, setTime] = useState();
 
-  const ClaimHandler = () => {
-    navigate("/claim");
+  const ClaimHandler = (path) => {
+    navigate(path);
   };
 
   useEffect(() => {
@@ -36,15 +37,18 @@ const Profile = ({ telegram_id, data, isSuccess }) => {
             {isSuccess ? data.quantity_mined : 0.0} TOY
           </span>
         </div>
-        <div className="flex gap-2 items-center">
-          <img src={IconImg} alt="check icon image" className="icon-img" />
+        <div
+          onClick={() => ClaimHandler("/referal")}
+          className="flex gap-2 items-center"
+        >
+          <HiUsers color="#f07330" size={30} />
           {/* <img src={ArrowImg} alt="check icon image" className="arrow-img " /> */}
           <IoIosArrowForward size={20} />
         </div>
       </div>
       <div className="card-row">
         <img src={HomeImg} className=" profile-img" alt="icon" />
-        <button onClick={() => ClaimHandler()} className="primary-btn">
+        <button onClick={() => ClaimHandler("/claim")} className="primary-btn">
           Play for TOY.!
         </button>
       </div>

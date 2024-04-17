@@ -2,10 +2,6 @@ import React, { useState, useEffect } from "react";
 import CheckImg from "../assets/home3.png";
 import { FaArrowRightLong } from "react-icons/fa6";
 
-import {
-  useGetToyCoinByIdQuery,
-  useClaimToyByIdMutation,
-} from "../api/toyCoinApi";
 import { useAddTaskByIdMutation } from "../api/taskApi";
 
 const EachTask = ({ tsk, telegram_id, claimNow, data, taskData }) => {
@@ -56,6 +52,7 @@ const EachTask = ({ tsk, telegram_id, claimNow, data, taskData }) => {
       }
     }
   };
+  console.log(tsk);
   return (
     <button
       onClick={() => Handler(tsk)}
@@ -66,10 +63,14 @@ const EachTask = ({ tsk, telegram_id, claimNow, data, taskData }) => {
 
       <div className="flex flex-1 flex-col w-10">
         <h3 className="text-lg font-bold">{tsk.task}</h3>
-        <div className="flex pt-1 gap-1">
+        <div className="flex pt-1 items-start justify-cente  gap-1">
           <div className="w-5 h-4 bg-green-500 rounded-full"></div>
           <div className="w-5 h-4 bg-blue-500 rounded-full"></div>
           <div className="w-5 h-4 bg-pink-500 rounded-full"></div>
+          {/* <div className="w-max p-0 m-0  rounded-full">
+            {" "}
+            ({tsk.quantity} TOY)
+          </div> */}
         </div>
       </div>
       <FaArrowRightLong className="pt-1" size={20} />

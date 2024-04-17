@@ -99,7 +99,7 @@ const ClaimToy = ({ data, isSuccess, error, tele_id }) => {
           setFirstClicked(result.first_click);
           setTimeClicked(result.time_clicked);
           // console.log("updated");
-          console.log(result);
+          // console.log(result);
           notify("Congatulations..! You just claimed 100 TOY");
         }
       } else {

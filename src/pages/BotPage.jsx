@@ -8,16 +8,16 @@ const BotPage = () => {
   return (
     <div className=" h-screen flex flex-col gap-4 p-6 justify-between bg-gray-100">
       <HeaderComp visible={true} />
-      <div>
+      {/* <div>
         <h2 className="text-5xl text-center">Mine by Shaking Box</h2>
         <p className=" text-center">
           After activation, participants can now mine by spinning. Activate
           Below !!!
         </p>
-      </div>
+      </div> */}
 
       <div onClick={() => NavHandler("boost")} className="card-col ">
-        <h2 className="text-5xl text-center text-green-200">$3</h2>
+        <h2 className="text-5xl text-center text-green-200">0.9 TON</h2>
         <h2 className="text-4xl text-center text-green-200">
           One Week Auto Shaker Bot
         </h2>
