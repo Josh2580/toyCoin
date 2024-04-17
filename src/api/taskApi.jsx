@@ -6,7 +6,11 @@ export const taskApi = rootApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllTask: builder.query({
       query: () => `task/all/`,
-      providesTags: (result, error, id) => [{ type: "Task", id }],
+      // providesTags: ["Task"],
+      providesTags: (result, error, id) =>
+        result
+          ? [...result.map((task) => ({ type: "Task", id: task.id })), "Task"]
+          : ["Task"],
     }),
     getTaskById: builder.query({
       query: (id) => `task/all/${id}/`,
@@ -19,7 +23,10 @@ export const taskApi = rootApi.injectEndpoints({
         method: "PATCH",
         body: formData,
       }),
-      invalidatesTags: (result, error, { id }) => [{ type: "Task", id }],
+      invalidatesTags: (result, error, { id }) => [
+        { type: "Task", id },
+        "Task",
+      ],
     }),
   }),
 });
