@@ -52,7 +52,7 @@ const EachTask = ({ tsk, telegram_id, claimNow, data, taskData }) => {
       }
     }
   };
-  console.log(tsk);
+  // console.log(tsk);
   return (
     <button
       onClick={() => Handler(tsk)}
@@ -64,13 +64,15 @@ const EachTask = ({ tsk, telegram_id, claimNow, data, taskData }) => {
       <div className="flex flex-1 flex-col w-10">
         <h3 className="text-lg font-bold">{tsk.task}</h3>
         <div className="flex pt-1 items-start justify-cente  gap-1">
-          <div className="w-5 h-4 bg-green-500 rounded-full"></div>
-          <div className="w-5 h-4 bg-blue-500 rounded-full"></div>
-          <div className="w-5 h-4 bg-pink-500 rounded-full"></div>
-          {/* <div className="w-max p-0 m-0  rounded-full">
+          <div className="flex gap-1 pt-1">
+            <div className="w-5 h-4 bg-green-500 rounded-full"></div>
+            <div className="w-5 h-4 bg-blue-500 rounded-full"></div>
+            <div className="w-5 h-4 bg-pink-500 rounded-full"></div>
+          </div>
+          <div className="w-max p-0 m-0 font-bold rounded-full">
             {" "}
             ({tsk.quantity} TOY)
-          </div> */}
+          </div>
         </div>
       </div>
       <FaArrowRightLong className="pt-1" size={20} />

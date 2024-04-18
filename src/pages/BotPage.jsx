@@ -16,10 +16,10 @@ const BotPage = () => {
         </p>
       </div> */}
 
-      <div onClick={() => NavHandler("boost")} className="card-col ">
-        <h2 className="text-5xl text-center text-green-200">0.9 TON</h2>
-        <h2 className="text-4xl text-center text-green-200">
-          One Week Auto Shaker Bot
+      <div onClick={() => NavHandler("boost")} className="card-col flex gap-6">
+        <h2 className="text-2xl text-center text-green-200">0.9 TON</h2>
+        <h2 className="text-2xl text-center text-green-200">
+          Auto Claiming Bot
         </h2>
 
         <button className="primary-btn bg-green-200 w-full text-gray-950">
