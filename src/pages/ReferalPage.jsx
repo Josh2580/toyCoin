@@ -27,7 +27,7 @@ const ReferalPage = () => {
       <div className=" h-screen">
         <div className="my-3">
           <RefLink telegram_id={telegram_id} />
-          <h3 className="font-bold italic my-2 flex justify-between">
+          <h3 className="font-bold text-gray-600 italic my-2 flex justify-between">
             <span>FRENS</span>
             <span>1000 $TOY per referral</span>
           </h3>

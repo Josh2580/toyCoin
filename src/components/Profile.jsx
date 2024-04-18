@@ -31,10 +31,12 @@ const Profile = ({ telegram_id, data, isSuccess }) => {
     <div className="bg-yellow-100 px-4 py-2 rounded-2xl">
       <div className="card-row ">
         <div className=" flex p-0 m-0 flex-col gap-0 ">
-          <span className="p-0 m-0">Total Claimed</span>
-          <span className="p-0 m-0">
+          <span className="p-0 m-0 text-sm font-bold text-gray-600">
+            Total Claimed
+          </span>
+          <span className="p-0 m-0 text-2xl font-bold text-gray-800">
             {" "}
-            {isSuccess ? data.quantity_mined : 0.0} TOY
+            {isSuccess ? data.quantity_mined : 0.0} $TOY
           </span>
         </div>
         <div
