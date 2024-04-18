@@ -35,7 +35,7 @@ const ClaimToy = ({ data, isSuccess, error, tele_id }) => {
   const [myTime, setMyTime] = useState();
   const [myPercent, setMyPercent] = useState(0);
 
-  const hourInMilliseconds = 3600 / 60; // 60 minutes * 60 seconds * 1000 milliseconds
+  const hourInMilliseconds = 3600; // 60 minutes * 60 seconds * 1000 milliseconds
   const updateInterval = 1000; // Update every second
 
   // const startTime = Date.now(timeClicked);
