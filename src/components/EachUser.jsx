@@ -12,7 +12,7 @@ const EachUser = ({ telegram_id }) => {
   //   console.log(data);
   return (
     <div
-      className={`flex justify-center items-center gap-2 text-left bg-yellow-100 p-4 rounded-xl `}
+      className={`flex justify-center items-center gap-2 text-left bg-yellow-100 p-4 mb-2 rounded-xl `}
     >
       <BiSolidUser color="#f07330" size={20} />
 

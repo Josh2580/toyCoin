@@ -27,7 +27,10 @@ const ReferalPage = () => {
       <div className=" h-screen">
         <div className="my-3">
           <RefLink telegram_id={telegram_id} />
-          <h3 className="font-bold italic">Fens</h3>
+          <h3 className="font-bold italic my-2 flex justify-between">
+            <span>FRENS</span>
+            <span>1000 $TOY per referral</span>
+          </h3>
           {isSuccess &&
             data.referred_users.map((ref, idx) => (
               <EachUser key={idx} telegram_id={ref} />
