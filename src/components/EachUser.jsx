@@ -18,7 +18,7 @@ const EachUser = ({ telegram_id }) => {
 
       <div className="flex flex-1 flex-col w-10">
         <h3 className="text-base font-semibold">
-          {isSuccess && data.username}
+          {isSuccess && (data.username || data.first_name)}
         </h3>
       </div>
       {/* <FaArrowRightLong className="pt-1" size={20} /> */}
