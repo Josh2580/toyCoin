@@ -125,7 +125,7 @@ const ClaimToy = ({ data, isSuccess, error, tele_id }) => {
         />
       </div>
       <button onClick={() => ClaimHandler()} className="primary-btn">
-        Claim Toy
+        Claim Toy/1hr
       </button>
     </div>
   );
