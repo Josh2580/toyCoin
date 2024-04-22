@@ -6,8 +6,8 @@ import { IoIosArrowBack } from "react-icons/io";
 const HeaderComp = ({ visible }) => {
   const navigate = useNavigate();
 
-  const ClickHandler = () => {
-    navigate("/home");
+  const ClickHandler = (path) => {
+    navigate(path);
   };
   const NavHandler = () => {
     navigate(-1);
@@ -21,10 +21,15 @@ const HeaderComp = ({ visible }) => {
           src={LogoImg}
           className="logo-img"
           alt="Logo Images"
-          onClick={() => ClickHandler()}
+          onClick={() => ClickHandler("/home")}
         />
       </div>
-      <button className="primary-btn">Connect Wallet</button>
+      <button
+        className="primary-btn"
+        onClick={() => ClickHandler("/connect-wallet")}
+      >
+        Connect Wallet
+      </button>
     </div>
   );
 };

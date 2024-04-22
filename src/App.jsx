@@ -18,6 +18,7 @@ import ClaimPage from "./pages/ClaimPage";
 import BoostPage from "./pages/BoostPage";
 import AppsPage from "./pages/AppsPage";
 import ReferalPage from "./pages/ReferalPage";
+import ConnectWalletPage from "./pages/ConnectWalletPage";
 
 const App = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +26,7 @@ const App = createBrowserRouter(
       <Route index element={<OnboardingPage3 />} />
       <Route path="/home" element={<HomePage />} />
       <Route path="/home/:telegram_id" element={<HomePage />} />
+      <Route path="/connect-wallet" element={<ConnectWalletPage />} />
       <Route path="/claim" element={<ClaimPage />} />
       <Route path="/earn" element={<EarnPage />} />
       <Route path="/app" element={<AppsPage />} />

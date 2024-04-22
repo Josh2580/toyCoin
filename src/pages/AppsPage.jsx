@@ -45,7 +45,7 @@ const AppsPage = () => {
             alt="Toy Cash Image"
           />
           <p className="text-center font-bold text-2xl text-green-300">
-            TOY LAUNCH PAD
+            TOY LAUNCHPAD
           </p>
 
           <button className="primary-btn bg-green-300 w-full font-bold text-gray-950">
