@@ -13,7 +13,7 @@ const Footer2 = () => {
   };
 
   return (
-    <div className="flex  gap-2 bg-pink-100 rounded-2xl">
+    <div className="flex bottom-0 w-full gap-2 bg-pink-100 rounded-2xl">
       <div
         onClick={() => NavHandler("bot")}
         className="card-col bg-transparent  gap-0 "

@@ -22,13 +22,14 @@ const ReferalPage = () => {
   //   console.log(data);
 
   return (
-    <div className=" h-screen flex flex-col gap-4 p-6 justify-between bg-gray-100">
-      <HeaderComp visible={true} />
-      <div className=" h-screen">
-        <div className="my-3">
+    <div className=" h-full min-h-screen relative flex flex-col gap-4 p-6 justify-between w-full bg-gray-100">
+      <div className="">
+        <HeaderComp visible={true} />
+
+        <div className="mb-3 mt-5">
           <RefLink telegram_id={telegram_id} />
           <h3 className="font-bold text-gray-600 italic my-2 flex justify-between">
-            <span>FRENS</span>
+            <span> {isSuccess && data.referred_users.length} FRENS</span>
             <span>1000 $TOY per referral</span>
           </h3>
           {isSuccess &&
