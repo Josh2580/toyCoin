@@ -13,34 +13,34 @@ const Footer2 = () => {
   };
 
   return (
-    <div className="flex bottom-0 w-full gap-2 bg-pink-100 rounded-2xl">
+    <div className="card-row h-max gap-2 bg-pink-200 py-4 rounded-2xl">
       <div
         onClick={() => NavHandler("bot")}
-        className="card-col bg-transparent  gap-0 "
+        className="card-col bg-transparent  gap-0 p-0 "
       >
         <img src={BotImg} alt="Bot Image" className="icon-img" />
-        <p>Bot</p>
+        <p className="nav-title">Bot</p>
       </div>
       <div
         onClick={() => NavHandler("app")}
-        className=" card-col gap-0 border-l border-gray-400 rounded-none bg-transparent"
+        className=" card-col gap-0 border-l border-gray-400 rounded-none bg-transparent p-0"
       >
         <img src={AppsImg} alt="Apps Image" className="icon-img" />
-        <p>Apps</p>
+        <p className="nav-title">Apps</p>
       </div>
       <div
         onClick={() => NavHandler("earn")}
-        className=" card-col gap-0 border-l border-gray-400 rounded-none bg-transparent"
+        className=" card-col gap-0 border-l border-gray-400 rounded-none bg-transparent p-0"
       >
         <img src={EarnImg} alt="Earn Image" className="icon-img" />
-        <p>Earn</p>
+        <p className="nav-title">Earn</p>
       </div>
       <div
         onClick={() => NavHandler("boost")}
-        className=" card-col gap-0 border-l border-gray-400 rounded-none bg-transparent"
+        className=" card-col gap-0 border-l border-gray-400 rounded-none bg-transparent p-0"
       >
         <img src={BoostImg} alt="Boost Image" className="icon-img" />
-        <p>Boost</p>
+        <p className="nav-title">Boost</p>
       </div>
     </div>
   );

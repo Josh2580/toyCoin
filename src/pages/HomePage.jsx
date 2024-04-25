@@ -30,11 +30,11 @@ const HomePage = () => {
 
   return (
     <div className=" h-screen flex flex-col gap-4 justify-between bg-gray-100">
-      <div className="m-3 mx-6 flex flex-col justify-between h-full ">
+      <div className="m-3 mx-6 flex gap-4 flex-col justify-between h-full ">
         <HeaderComp />
-        {/* // {data && ( */}
+
         <Profile telegram_id={myTelegramId} data={data} isSuccess={isSuccess} />
-        {/* // )} */}
+
         <Gain />
       </div>
       <Footer1 />

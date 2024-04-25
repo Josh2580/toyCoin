@@ -31,10 +31,10 @@ const Profile = ({ telegram_id, data, isSuccess }) => {
     <div className="bg-yellow-100 px-4 py-2 rounded-2xl">
       <div className="card-row ">
         <div className=" flex p-0 m-0 flex-col gap-0 ">
-          <span className="p-0 m-0 text-sm font-bold text-gray-600">
+          <span className="p-0 m-0 card-row text-base text-gray-700 font-semibold">
             Total Claimed
           </span>
-          <span className="p-0 m-0 text-2xl font-bold text-gray-800">
+          <span className="p-0 m-0 text-2xl font-bold text-gray-700">
             {" "}
             {isSuccess ? data.quantity_mined : 0.0} $TOY
           </span>
@@ -54,15 +54,20 @@ const Profile = ({ telegram_id, data, isSuccess }) => {
           Play for TOY.!
         </button>
       </div>
-      <div className="card-row">
+      <div className="card-row text-base text-gray-700 font-semibold">
         <p>Launch Date</p>
         <p>Count Down</p>
       </div>
       <div className="flex gap-2 items-center">
         <div className=" w-max">
-          <img src={CheckImg} alt="check icon image" className="icon-img" />
+          <img
+            src={CheckImg}
+            alt="check icon image"
+            className="icon-img w-8 h-8"
+          />
         </div>
-        <div className="flex flex-1 flex-col  w-max ">01-Aug-2024</div>
+
+        <div className="text-sm text-gray-700 font-semibold">01-Aug-2024</div>
         <div className="flex flex-1 flex-col  w-max  items-end">
           {isSuccess && myData && <MyTimer expiryTimestamp={time} />}
         </div>

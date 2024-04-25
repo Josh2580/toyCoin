@@ -32,11 +32,15 @@ const MyTimer = ({ expiryTimestamp }) => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <div style={{ fontSize: "20px" }}>
-        <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:
-        <span>{seconds}</span>
+      <div
+        // style={{ fontSize: "16px" }}
+        className="text-sm text-gray-700 font-semibold"
+      >
+        <span>{days}days</span> : <span>{hours}hrs</span>
+        {/* :<span>{minutes}</span>:
+        <span>{seconds}</span> */}
       </div>
-      <p>{isRunning ? "Now In Progress" : "Pls Claim"}</p>
+      {/* <p>{isRunning ? "Now In Progress" : "Pls Claim"}</p> */}
       {/* <button onClick={start}>Start</button>
       <button onClick={pause}>Pause</button>
       <button onClick={resume}>Resume</button>
