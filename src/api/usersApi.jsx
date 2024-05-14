@@ -2,6 +2,10 @@ import { rootApi } from "./rootApi";
 
 const usersApi = rootApi.injectEndpoints({
   endpoints: (build) => ({
+    getAllUsers: build.query({
+      query: () => `telegram/all/`,
+      providesTags: ["TelegramUser"],
+    }),
     getTelegramUser: build.query({
       query: (telegram_id) => `telegram/all/${telegram_id}/`,
       providesTags: ["TelegramUser"],
@@ -18,5 +22,8 @@ const usersApi = rootApi.injectEndpoints({
   //   overrideExisting: false,
 });
 
-export const { useCreateTelegramUserMutation, useGetTelegramUserQuery } =
-  usersApi;
+export const {
+  useCreateTelegramUserMutation,
+  useGetTelegramUserQuery,
+  useGetAllUsersQuery,
+} = usersApi;

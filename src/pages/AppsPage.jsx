@@ -6,8 +6,8 @@ import Toy2Img from "../assets/Toycaser.png";
 
 const AppsPage = () => {
   return (
-    <div className=" h-screen flex flex-col gap-12 p-6 justify-between bg-gray-100">
-      <div>
+    <div className=" h-screen flex flex-col gap-12 px-6 pt-2 justify-between bg-gray-100">
+      <div className="flex flex-col gap-4">
         <HeaderComp visible={true} />
 
         <div>

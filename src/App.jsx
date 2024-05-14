@@ -19,6 +19,7 @@ import BoostPage from "./pages/BoostPage";
 import AppsPage from "./pages/AppsPage";
 import ReferalPage from "./pages/ReferalPage";
 import ConnectWalletPage from "./pages/ConnectWalletPage";
+import StatsPage from "./pages/StatsPage";
 
 const App = createBrowserRouter(
   createRoutesFromElements(
@@ -30,6 +31,7 @@ const App = createBrowserRouter(
       <Route path="/claim" element={<ClaimPage />} />
       <Route path="/earn" element={<EarnPage />} />
       <Route path="/app" element={<AppsPage />} />
+      <Route path="/stats" element={<StatsPage />} />
       <Route path="/referal" element={<ReferalPage />} />
       <Route path="/bot" element={<BotPage />} />
       <Route path="/boost" element={<BoostPage />} />

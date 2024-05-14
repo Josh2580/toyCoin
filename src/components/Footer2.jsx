@@ -1,7 +1,8 @@
 import React from "react";
 import BotImg from "../assets/bot.png";
 import AppsImg from "../assets/app.png";
-import BoostImg from "../assets/boost.png";
+// import BoostImg from "../assets/boost.png";
+import StatsImg from "../assets/stats.png";
 import EarnImg from "../assets/earn.png";
 import { useNavigate } from "react-router-dom";
 
@@ -35,12 +36,19 @@ const Footer2 = () => {
         <img src={EarnImg} alt="Earn Image" className="icon-img" />
         <p className="nav-title">Earn</p>
       </div>
-      <div
+      {/* <div
         onClick={() => NavHandler("boost")}
         className=" card-col gap-0 border-l border-gray-400 rounded-none bg-transparent p-0"
       >
         <img src={BoostImg} alt="Boost Image" className="icon-img" />
         <p className="nav-title">Boost</p>
+      </div> */}
+      <div
+        onClick={() => NavHandler("stats")}
+        className=" card-col gap-0 border-l border-gray-400 rounded-none bg-transparent p-0"
+      >
+        <img src={StatsImg} alt="Boost Image" className="icon-img" />
+        <p className="nav-title">Stats</p>
       </div>
     </div>
   );

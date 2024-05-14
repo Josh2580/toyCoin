@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import HeaderComp from "./../components/HeaderComp";
 import Profile from "./../components/Profile";
 import Gain from "./../components/Gain";
-import Footer1 from "../components/Footer1";
+import Footer2 from "../components/Footer2";
 import { useParams } from "react-router-dom";
 import { useGetToyCoinByIdQuery } from "../api/toyCoinApi";
 
@@ -26,18 +26,18 @@ const HomePage = () => {
       skip: !myTelegramId,
     }
   );
+
   // console.log(data);
 
   return (
-    <div className=" h-screen flex flex-col gap-4 justify-between bg-gray-100">
-      <div className="m-3 mx-6 flex gap-4 flex-col justify-between h-full ">
+    <div className=" h-screen flex flex-col gap-12 px-6 pt-2 justify-between bg-gray-100">
+      <div className="flex flex-col gap-4">
         <HeaderComp />
-
         <Profile telegram_id={myTelegramId} data={data} isSuccess={isSuccess} />
 
         <Gain />
       </div>
-      <Footer1 />
+      <Footer2 />
     </div>
   );
 };

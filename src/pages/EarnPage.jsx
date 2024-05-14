@@ -33,33 +33,39 @@ const EarnPage = () => {
   }, [data, a, telegram_id]);
 
   return (
-    <div className=" h-screen flex flex-col gap-4 p-6 justify-between bg-gray-100">
-      <HeaderComp visible={true} />
-      <div>
-        <p className="text-center font-semibold text-gray-400">Your Balance</p>
-        <p className="text-center font-bold text-3xl">
-          {isSuccess && data.quantity_mined} TOY
-        </p>
-        <p className="text-center text-blue-500 font-semibold">How it works</p>
+    <div className=" h-screen flex flex-col gap-12 px-6 pt-2 justify-between bg-gray-100">
+      <div className="flex flex-col gap-4">
+        <HeaderComp visible={true} />
+        <div>
+          <p className="text-center font-semibold text-gray-400">
+            Your Balance
+          </p>
+          <p className="text-center font-bold text-3xl">
+            {isSuccess && data.quantity_mined} TOY
+          </p>
+          <p className="text-center text-blue-500 font-semibold">
+            How it works
+          </p>
+        </div>
+        {taskData &&
+          data &&
+          taskData.map((tsk, idx) => {
+            const hasClicked = tsk.user.find((a) => a == data.user);
+            // Can Javascript code here
+            // console.log(tsk);
+            return (
+              <EachTask
+                key={idx}
+                tsk={tsk}
+                hasClicked={hasClicked}
+                telegram_id={telegram_id}
+                claimNow={claimNow}
+                data={data}
+                taskData={taskData}
+              />
+            );
+          })}
       </div>
-      {taskData &&
-        data &&
-        taskData.map((tsk, idx) => {
-          const hasClicked = tsk.user.find((a) => a == data.user);
-          // Can Javascript code here
-          // console.log(tsk);
-          return (
-            <EachTask
-              key={idx}
-              tsk={tsk}
-              hasClicked={hasClicked}
-              telegram_id={telegram_id}
-              claimNow={claimNow}
-              data={data}
-              taskData={taskData}
-            />
-          );
-        })}
       <Footer2 />
     </div>
   );
