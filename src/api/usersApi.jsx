@@ -10,6 +10,14 @@ const usersApi = rootApi.injectEndpoints({
       query: (telegram_id) => `telegram/all/${telegram_id}/`,
       providesTags: ["TelegramUser"],
     }),
+    updateTelegramUser: build.mutation({
+      query: ({ formData, telegram_id }) => ({
+        url: `telegram/all/${telegram_id}/`,
+        method: "PATCH",
+        body: formData,
+      }),
+      invalidatesTags: ["TelegramUser"],
+    }),
     createTelegramUser: build.mutation({
       query: ({ formData }) => ({
         url: `telegram/all/`,
@@ -26,4 +34,5 @@ export const {
   useCreateTelegramUserMutation,
   useGetTelegramUserQuery,
   useGetAllUsersQuery,
+  useUpdateTelegramUserMutation,
 } = usersApi;

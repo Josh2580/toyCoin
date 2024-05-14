@@ -66,7 +66,22 @@ const StatsPage = () => {
               <p className="text-sm text-gray-700 font-bold">Total Users</p>
 
               <div className="w-max p-0 m-0 text-2xl text-gray-800 font-bold rounded-full">
-                {isSuccess && data.get_total_users}
+                {isSuccess &&
+                  parseFloat(data.get_total_users).toLocaleString("en-US")}
+              </div>
+            </div>
+          </div>
+          <div
+            className={`flex justify-center gap-2 text-left bg-purple-200  p-4 rounded-xl `}
+          >
+            <img src={CheckImg} className="icon-img " alt="Check Image" />
+
+            <div className="flex flex-1 flex-col w-10">
+              <p className="text-sm text-gray-700 font-bold">Daily Users</p>
+
+              <div className="w-max p-0 m-0 text-2xl text-gray-800 font-bold rounded-full">
+                {isSuccess &&
+                  parseFloat(data.get_daily_users).toLocaleString("en-US")}
               </div>
             </div>
           </div>

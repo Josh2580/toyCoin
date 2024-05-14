@@ -50,7 +50,11 @@ const Profile = ({ telegram_id, data, isSuccess }) => {
       </div>
       <div className="card-row">
         <img src={HomeImg} className=" profile-img" alt="icon" />
-        <button onClick={() => ClaimHandler("/claim")} className="primary-btn">
+        <button
+          onClick={() => ClaimHandler("/claim")}
+          className={`primary-btn ${!data && "cursor-not-allowed  opacity-50"}`}
+          disabled={!data}
+        >
           Play for TOY.!
         </button>
       </div>
