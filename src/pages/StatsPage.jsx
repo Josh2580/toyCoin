@@ -26,6 +26,8 @@ const StatsPage = () => {
     }
   );
 
+  // console.log(data);
+
   return (
     <div className=" h-screen flex flex-col gap-12 px-6 pt-2 justify-between bg-gray-100">
       <div className="flex flex-col gap-4">
@@ -82,6 +84,20 @@ const StatsPage = () => {
               <div className="w-max p-0 m-0 text-2xl text-gray-800 font-bold rounded-full">
                 {isSuccess &&
                   parseFloat(data.get_daily_users).toLocaleString("en-US")}
+              </div>
+            </div>
+          </div>
+          <div
+            className={`flex justify-center gap-2 text-left bg-purple-200  p-4 rounded-xl `}
+          >
+            <img src={CheckImg} className="icon-img " alt="Check Image" />
+
+            <div className="flex flex-1 flex-col w-10">
+              <p className="text-sm text-gray-700 font-bold">Online Users</p>
+
+              <div className="w-max p-0 m-0 text-2xl text-gray-800 font-bold rounded-full">
+                {isSuccess &&
+                  parseFloat(data.get_online_users).toLocaleString("en-US")}
               </div>
             </div>
           </div>
