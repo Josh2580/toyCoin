@@ -51,7 +51,7 @@ const EarnPage = () => {
           data &&
           taskData.map((tsk, idx) => {
             const hasClicked = tsk.user.find((a) => a == data.user);
-            // Can Javascript code here
+            // Javascript code here
             // console.log(tsk);
             return (
               <EachTask
