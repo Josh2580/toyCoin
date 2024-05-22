@@ -95,7 +95,7 @@ const EachTask = ({ tsk, telegram_id, claimNow, data, taskData }) => {
         <FaArrowRightLong className="pt-1 " size={20} />
         <button
           onClick={() => CheckHandler(tsk)}
-          // disabled={registered || isLoading}
+          disabled={registered || isLoading}
           className={`py-0 m-0 font-bold primary-btn ${(registered || isLoading) && "opacity-40"}`}
         >
           Check
