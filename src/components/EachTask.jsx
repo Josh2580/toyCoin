@@ -73,7 +73,7 @@ const EachTask = ({ tsk, telegram_id, claimNow, data, taskData }) => {
 
   return (
     <div
-      className={`flex justify-center gap-2 text-left bg-blue-200  p-4 rounded-xl `}
+      className={`${tsk.completed ? "hidden" : "flex"} justify-center gap-2 text-left bg-blue-200  p-4 rounded-xl `}
     >
       {/* <img src={CheckImg} className="icon-img " alt="Check Image" /> */}
 
