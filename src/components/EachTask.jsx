@@ -23,45 +23,63 @@ const EachTask = ({ tsk, telegram_id, claimNow, data, taskData }) => {
     // console.log(tsk);
   }, [data, taskData, now]);
 
-  const Handler = async (task) => {
-    console.log(task);
-    if (registered) {
-      console.log("Task already Completed");
-    } else if (!registered) {
-      console.log("Task Just Clicked");
+  const CheckHandler = async (task) => {
+    console.log("checking");
+    let checkResult = task.user.find((a) => a == data.user);
+    if (checkResult) {
       setIsLoading(true);
-      let user = data.user; // Current User
-      let id = tsk.id; // Current Task
-      const formData = new FormData();
-      formData.append("telegram_id", telegram_id);
-
-      let result = await addTask({ id, formData });
-      if (result) {
-        console.log(result.data.url);
-        const toyFormData = new FormData();
-        let mineData = data.quantity_mined;
-        let quantity = result.data.quantity;
-        toyFormData.append("quantity_mined", Number(mineData) + quantity);
-        let toyResult = await claimNow({
-          formData: toyFormData,
-          id: telegram_id,
-        }).unwrap();
-        if (toyResult) {
-          window.location.href = result.data.url;
-        }
-      }
+      const toyFormData = new FormData();
+      let mineData = data.quantity_mined;
+      let quantity = task.quantity;
+      toyFormData.append("quantity_mined", Number(mineData) + quantity);
+      let toyResult = await claimNow({
+        formData: toyFormData,
+        id: telegram_id,
+      }).unwrap();
     }
   };
-  // console.log(tsk);
-  return (
-    <button
-      onClick={() => Handler(tsk)}
-      disabled={registered || isLoading}
-      className={`flex justify-center gap-2 text-left bg-blue-200 ${(registered || isLoading) && "opacity-40"} p-4 rounded-xl `}
-    >
-      <img src={CheckImg} className="icon-img " alt="Check Image" />
 
-      <div className="flex flex-1 flex-col w-10">
+  const TaskHandler = async (task) => {
+    console.log(task);
+    // if (registered) {
+    //   console.log("Task already Completed");
+    // } else if (!registered) {
+    console.log("Task Just Clicked");
+    // setIsLoading(true);
+    // let user = data.user; // Current User
+    // let id = tsk.group_id; // Current Task
+    // const formData = new FormData();
+    // formData.append("telegram_id", telegram_id);
+
+    // let result = await addTask({ id, formData });
+    // if (result) {
+    //   // console.log(result.data.url);
+    //   const toyFormData = new FormData();
+    //   let mineData = data.quantity_mined;
+    //   let quantity = result.data.quantity;
+    //   toyFormData.append("quantity_mined", Number(mineData) + quantity);
+    //   let toyResult = await claimNow({
+    //     formData: toyFormData,
+    //     id: telegram_id,
+    //   }).unwrap();
+    //   if (toyResult) {
+    let url = task.url;
+    window.open(task.url, "_blank");
+    //   }
+    // }
+    // }
+  };
+
+  return (
+    <div
+      className={`flex justify-center gap-2 text-left bg-blue-200  p-4 rounded-xl `}
+    >
+      {/* <img src={CheckImg} className="icon-img " alt="Check Image" /> */}
+
+      <div
+        onClick={() => TaskHandler(tsk)}
+        className="flex flex-1 flex-col w-10"
+      >
         <h3 className="text-lg font-bold">{tsk.task}</h3>
         <div className="flex pt-1 items-start justify-cente  gap-1">
           <div className="flex gap-1 pt-1">
@@ -69,14 +87,20 @@ const EachTask = ({ tsk, telegram_id, claimNow, data, taskData }) => {
             <div className="w-5 h-4 bg-blue-500 rounded-full"></div>
             <div className="w-5 h-4 bg-pink-500 rounded-full"></div>
           </div>
-          <div className="w-max p-0 m-0 font-bold rounded-full">
-            {" "}
-            ({tsk.quantity} TOY)
-          </div>
+          <div className="w-full p-0 m-0 font-bold">({tsk.quantity} TOY)</div>
         </div>
       </div>
-      <FaArrowRightLong className="pt-1" size={20} />
-    </button>
+      <div className="flex flex-col h-full justify-between items-end ">
+        <FaArrowRightLong className="pt-1 " size={20} />
+        <button
+          onClick={() => CheckHandler(tsk)}
+          disabled={registered || isLoading}
+          className={`py-0 m-0 font-bold primary-btn ${(registered || isLoading) && "opacity-40"}`}
+        >
+          Check
+        </button>
+      </div>
+    </div>
   );
 };
 
