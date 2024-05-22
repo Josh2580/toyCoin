@@ -25,18 +25,19 @@ const EachTask = ({ tsk, telegram_id, claimNow, data, taskData }) => {
 
   const CheckHandler = async (task) => {
     let checkResult = task.user.find((a) => a == data.user);
-    if (checkResult) {
-      console.log("checking");
-      setIsLoading(true);
-      const toyFormData = new FormData();
-      let mineData = data.quantity_mined;
-      let quantity = task.quantity;
-      toyFormData.append("quantity_mined", Number(mineData) + quantity);
-      let toyResult = await claimNow({
-        formData: toyFormData,
-        id: telegram_id,
-      }).unwrap();
-    }
+    // if (checkResult) {
+    //   console.log("checking");
+    //   setIsLoading(true);
+    //   const toyFormData = new FormData();
+    //   let mineData = data.quantity_mined;
+    //   let quantity = task.quantity;
+    //   toyFormData.append("quantity_mined", Number(mineData) + quantity);
+    //   let toyResult = await claimNow({
+    //     formData: toyFormData,
+    //     id: telegram_id,
+    //   }).unwrap();
+    // }
+    window.location.reload();
   };
 
   const TaskHandler = async (task) => {
@@ -92,13 +93,13 @@ const EachTask = ({ tsk, telegram_id, claimNow, data, taskData }) => {
       </div>
       <div className="flex flex-col h-full justify-between items-end ">
         <FaArrowRightLong className="pt-1 " size={20} />
-        {/* <button
+        <button
           onClick={() => CheckHandler(tsk)}
           // disabled={registered || isLoading}
           className={`py-0 m-0 font-bold primary-btn ${(registered || isLoading) && "opacity-40"}`}
         >
           Check
-        </button> */}
+        </button>
       </div>
     </div>
   );
