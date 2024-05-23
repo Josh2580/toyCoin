@@ -5,11 +5,11 @@ import video from "../../assets/preloader.mp4";
 
 const Preloader = () => {
   return (
-    <div className="preloade">
-      <div className="spinne"></div>
-      <video width="750" height="500" loop autoPlay>
+    <div className="preloader">
+      <div className="spinner"></div>
+      {/* <video width="750" height="500" loop autoPlay>
         <source src={video} type="video/mp4" />
-      </video>
+      </video> */}
     </div>
   );
 };
