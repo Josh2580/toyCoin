@@ -62,10 +62,9 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
       <Route index element={<OnboardingPage3 />} />
-      <Route path="home" element={<UpdatingPage />} />
-      <Route path="home/:telegram_id" element={<UpdatingPage />} />
-      {/* <Route path="connect-wallet" element={<ConnectWalletPage />} /> */}
-      <Route path="connect-wallet" element={<UpdatingPage />} />
+      <Route path="home" element={<HomePage />} />
+      <Route path="home/:telegram_id" element={<HomePage />} />
+      <Route path="connect-wallet" element={<ConnectWalletPage />} />
       <Route path="claim" element={<ClaimPage />} />
       <Route path="earn" element={<EarnPage />} />
       <Route path="app" element={<AppsPage />} />
