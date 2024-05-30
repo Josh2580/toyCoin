@@ -56,13 +56,14 @@ const BotPage = lazy(() => import("./pages/BotPage"));
 const BoostPage = lazy(() => import("./pages/BoostPage"));
 const BotSuccessPage = lazy(() => import("./pages/BotSuccessPage"));
 const BotFailedPage = lazy(() => import("./pages/BotFailedPage"));
+const UpdatingPage = lazy(() => import("./pages/UpdatingPage"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
       <Route index element={<OnboardingPage3 />} />
-      <Route path="home" element={<HomePage />} />
-      <Route path="home/:telegram_id" element={<HomePage />} />
+      <Route path="home" element={<UpdatingPage />} />
+      <Route path="home/:telegram_id" element={<UpdatingPage />} />
       <Route path="connect-wallet" element={<ConnectWalletPage />} />
       <Route path="claim" element={<ClaimPage />} />
       <Route path="earn" element={<EarnPage />} />
@@ -73,6 +74,7 @@ const router = createBrowserRouter(
       <Route path="boost" element={<BoostPage />} />
       <Route path="bot-success" element={<BotSuccessPage />} />
       <Route path="bot-failed" element={<BotFailedPage />} />
+      <Route path="update" element={<UpdatingPage />} />
     </Route>
   )
 );
