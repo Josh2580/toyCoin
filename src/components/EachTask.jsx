@@ -6,7 +6,10 @@ import { useAddTaskByIdMutation } from "../api/taskApi";
 
 const EachTask = ({ tsk, telegram_id, claimNow, data, taskData }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [myWindow, setMyWindow] = useState(null);
+  const [addTaskResult, setAddTaskResult] = useState(null);
   const [registered, setRegistered] = useState();
+  let checkResult = tsk.user.find((a) => a == data.user);
 
   // Perform Task
   const [addTask] = useAddTaskByIdMutation();
@@ -16,67 +19,92 @@ const EachTask = ({ tsk, telegram_id, claimNow, data, taskData }) => {
   useEffect(() => {
     let reg = tsk.user.find((a) => a == data.user);
     setRegistered(reg);
-    // console.log(registered);
-    // console.log(reg);
-    // console.log(regist);
-    // console.log(now);
-    // console.log(tsk);
   }, [data, taskData, now]);
 
+  const [counter, setCounter] = useState(0);
+  let intervalId = null;
+  let count = 0;
+
   const CheckHandler = async (task) => {
-    let checkResult = task.user.find((a) => a == data.user);
-    // if (checkResult) {
-    //   console.log("checking");
-    //   setIsLoading(true);
-    //   const toyFormData = new FormData();
-    //   let mineData = data.quantity_mined;
-    //   let quantity = task.quantity;
-    //   toyFormData.append("quantity_mined", Number(mineData) + quantity);
-    //   let toyResult = await claimNow({
-    //     formData: toyFormData,
-    //     id: telegram_id,
-    //   }).unwrap();
+    // if (task.group_id.startsWith("twitter")) {
+    //   // If the group Id starts with twitter
+    //   console.log("starts with twitter");
+    //   let userResult = tsk.user.find((a) => a == data.user);
+    //   // setAdded(true);
+
+    //   // if (userResult) {
+    //   //   const toyFormData = new FormData();
+    //   //   let mineData = data.quantity_mined;
+    //   //   let quantity = task.quantity;
+    //   //   toyFormData.append("quantity_mined", Number(mineData) + quantity);
+    //   //   let toyResult = await claimNow({
+    //   //     formData: toyFormData,
+    //   //     id: telegram_id,
+    //   //   }).unwrap();
+    //   //   if (toyResult) {
+    //   //     console.log(toyResult);
+    //   //   }
+    //   // }
+    // } else {
+    //   console.log("Does not start with twitter");
     // }
+
     window.location.reload();
+
+    // const increment = () => {
+    //   if (count < 5) {
+    //     // setCount(count + 1);
+    //     count = count + 1;
+    //     console.log("counting: ", count);
+    //     setCounter(count);
+    //   }
+    //   // else {
+    //   //   clearInterval(intervalId);
+    //   //   console.log("stopping count", count);
+    //   // }
+    // };
+
+    // intervalId = setInterval(increment, 1000);
+    // let myIntel = setTimeout(() => {
+    //   clearInterval(intervalId);
+    //   setCounter(0);
+    // }, 3000);
+    // return () => clearTimeout(myIntel);
   };
 
   const TaskHandler = async (task) => {
-    console.log(task);
-    // if (registered) {
-    //   console.log("Task already Completed");
-    // } else if (!registered) {
-    console.log("Task Just Clicked");
-    // setIsLoading(true);
-    // let user = data.user; // Current User
-    // let id = tsk.group_id; // Current Task
-    // const formData = new FormData();
-    // formData.append("telegram_id", telegram_id);
+    let user = data.user; // Current User
+    let id = task.group_id; // Current Task
 
-    // let result = await addTask({ id, formData });
-    // if (result) {
-    //   // console.log(result.data.url);
-    //   const toyFormData = new FormData();
-    //   let mineData = data.quantity_mined;
-    //   let quantity = result.data.quantity;
-    //   toyFormData.append("quantity_mined", Number(mineData) + quantity);
-    //   let toyResult = await claimNow({
-    //     formData: toyFormData,
-    //     id: telegram_id,
-    //   }).unwrap();
-    //   if (toyResult) {
-    let url = task.url;
-    window.open(task.url, "_blank");
-    //   }
-    // }
-    // }
+    const newWindow = window.open(task.url, "_blank");
+    setMyWindow(newWindow);
+    if (newWindow && task.group_id.startsWith("twitter")) {
+      console.log("visited");
+      if (!checkResult) {
+        console.log("checking");
+        const formData = new FormData();
+        // adding users telegram id with formdata
+        formData.append("telegram_id", telegram_id);
+        let result = await addTask({ id, formData });
+        setAddTaskResult(result);
+        if (result) {
+          const toyFormData = new FormData();
+          let mineData = data.quantity_mined;
+          let quantity = task.quantity;
+          toyFormData.append("quantity_mined", Number(mineData) + quantity);
+          let toyResult = await claimNow({
+            formData: toyFormData,
+            id: telegram_id,
+          }).unwrap();
+        }
+      }
+    }
   };
 
   return (
     <div
       className={`${tsk.completed ? "hidden" : "flex"} justify-center gap-2 text-left bg-blue-200  p-4 rounded-xl `}
     >
-      {/* <img src={CheckImg} className="icon-img " alt="Check Image" /> */}
-
       <div
         onClick={() => TaskHandler(tsk)}
         className="flex flex-1 flex-col w-10"
@@ -96,9 +124,10 @@ const EachTask = ({ tsk, telegram_id, claimNow, data, taskData }) => {
         <button
           onClick={() => CheckHandler(tsk)}
           disabled={registered || isLoading}
-          className={`py-0 m-0 font-bold primary-btn ${(registered || isLoading) && "opacity-40"}`}
+          className={` py-0 m-0 font-bold primary-btn ${(registered || isLoading) && "opacity-40"}`}
         >
           Check
+          {/* {counter} */}
         </button>
       </div>
     </div>
