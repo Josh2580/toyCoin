@@ -6,6 +6,6 @@ export const rootApi = createApi({
   reducerPath: "rootApi",
   baseQuery: fetchBaseQuery({ baseUrl: "https://toyback.onrender.com/" }),
   // baseQuery: fetchBaseQuery({ baseUrl: "http://127.0.0.1:8000/" }),
-  tagTypes: ["ToyCoin", "TelegramUser", "Task"],
+  tagTypes: ["ToyCoin", "TelegramUser", "Task", "AutoBot"],
   endpoints: (builder) => ({}),
 });

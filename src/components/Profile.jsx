@@ -54,7 +54,7 @@ const Profile = ({ telegram_id, data, isSuccess }) => {
           Play for TOY.!
         </button>
       </div>
-      <div className="card-row text-base text-gray-700 font-semibold">
+      {/* <div className="card-row text-base text-gray-700 font-semibold">
         <p>Launch Date</p>
         <p>Count Down</p>
       </div>
@@ -71,7 +71,7 @@ const Profile = ({ telegram_id, data, isSuccess }) => {
         <div className="flex flex-1 flex-col  w-max  items-end">
           {isSuccess && myData && <MyTimer expiryTimestamp={time} />}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
