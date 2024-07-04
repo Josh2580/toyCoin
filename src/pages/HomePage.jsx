@@ -43,7 +43,8 @@ const HomePage = () => {
       formData.append("last_active", isoDate);
       updateTelegramUser({ formData, telegram_id: myTelegramId });
     }
-  }, [myTelegramId, userData]); // Empty dependency array means this effect will only run once, similar to componentDidMount
+  }, [myTelegramId]); // Empty dependency array means this effect will only run once, similar to componentDidMount
+  // }, [myTelegramId, userData]); // Empty dependency array means this effect will only run once, similar to componentDidMount
 
   return (
     <div className=" h-screen flex flex-col gap-12 px-6 pt-2 justify-between bg-gray-100">
