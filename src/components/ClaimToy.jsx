@@ -81,7 +81,8 @@ const ClaimToy = ({ data, isSuccess, error, tele_id }) => {
       // console.log("its now");
       const result = await createToy({ formData }).unwrap();
       if (result) {
-        console.log(result);
+        // console.log(result);
+        notify("Congatulations..! You just claimed 100 TOY");
       }
     } else {
       if (elapsedTime >= hourInMilliseconds) {

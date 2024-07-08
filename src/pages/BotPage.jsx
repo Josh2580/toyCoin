@@ -11,9 +11,12 @@ import {
   useGetToyCoinByIdQuery,
   useClaimToyByIdMutation,
 } from "../api/toyCoinApi";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BotPage = () => {
   const [telegram_id, set_telegram_id] = useState();
+  const notify = (msg) => toast(msg);
 
   const { data: coinData, isSuccess: coinIsSuccess } = useGetToyCoinByIdQuery(
     telegram_id,
@@ -54,7 +57,9 @@ const BotPage = () => {
       formData.append("telegram_id", telegram_id);
       // console.log("its now");
       const result = await createFreeAutoBot({ formData }).unwrap();
-      // result ? console.log(result) : console.log(result);
+      if (result) {
+        notify("Congatulations..! You just activated ToyBot");
+      }
     }
   };
 
@@ -81,6 +86,7 @@ const BotPage = () => {
     // <div className=" h-screen flex flex-col gap-12  justify-between bg-gray-100">
     <div className="flex h-screen flex-col gap-4 px-6 pt-2 justify-between bg-gray-100">
       <HeaderComp visible={true} />
+      <ToastContainer />
 
       <div
         className={`flex justify-center gap-2 text-left bg-blue-200  p-4 rounded-xl`}
