@@ -27,7 +27,7 @@ export const autoBotApi = rootApi.injectEndpoints({
         method: "POST",
         body: formData,
       }),
-      invalidatesTags: (result, error, { id }) => [{ type: "AutoBot", id }],
+      invalidatesTags: ["AutoBot"],
     }),
     addFreeAutoBotById: builder.mutation({
       // note: an optional `queryFn` may be used in place of `query`

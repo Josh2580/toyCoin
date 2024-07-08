@@ -9,10 +9,12 @@ import {
   useGetTelegramUserQuery,
   useUpdateTelegramUserMutation,
 } from "../api/usersApi";
+import FreeAutoBotComp from "../components/FreeAutoBotComp";
 
 const HomePage = () => {
-  const { telegram_id } = useParams();
-  const [myTelegramId, setMyTelegramId] = useState();
+  const { telegram_id } = useParams(); // Get telegram-id from the URL
+  const [myTelegramId, setMyTelegramId] = useState(); // telegram-id state
+  const [autoBotActivated, setAutoBotActivated] = useState(false); // telegram-id state
 
   useEffect(() => {
     if (telegram_id) {
@@ -46,12 +48,29 @@ const HomePage = () => {
   }, [myTelegramId]); // Empty dependency array means this effect will only run once, similar to componentDidMount
   // }, [myTelegramId, userData]); // Empty dependency array means this effect will only run once, similar to componentDidMount
 
+  useEffect(() => {
+    // useEffect to check if auto-bot is activated
+
+    if (userData && userData.user_bot) {
+      setAutoBotActivated(true);
+    } else {
+      setAutoBotActivated(false);
+    }
+  }, [userData]);
+
   return (
     <div className=" h-screen flex flex-col gap-12 px-6 pt-2 justify-between bg-gray-100">
       <div className="flex flex-col gap-4">
         <HeaderComp />
         <Profile telegram_id={myTelegramId} data={data} isSuccess={isSuccess} />
 
+        <>
+          <FreeAutoBotComp
+            telegram_id={myTelegramId}
+            autoBotActivated={autoBotActivated}
+            coinData={data}
+          />
+        </>
         <Gain />
       </div>
       <Footer2 />

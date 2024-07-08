@@ -1,4 +1,49 @@
-#root {
+.customOverlay {
+  background: rgba(36, 123, 160, 0.4);
+}
+.customModal {
+  background: #d6dbb2;
+  max-width: 500px;
+  width: 90%;
+  padding: 2rem 0rem 2rem 0rem;
+  border-radius: 10px;
+}
+
+@keyframes customEnterOverlayAnimation {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes customLeaveOverlayAnimation {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes customEnterModalAnimation {
+  0% {
+    transform: scale(0.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes customLeaveModalAnimation {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.2);
+  }
+}
+
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,4 +84,4 @@
 
 .read-the-docs {
   color: #888;
-}
+} */
