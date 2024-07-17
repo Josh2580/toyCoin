@@ -132,7 +132,7 @@ const FreeAutoBotComp = ({ telegram_id, autoBotActivated, coinData }) => {
         </span>
 
         <span className="p-0 m-0 text-3xl font-bold text-gray-800">
-          $
+      
           {autoMinedDataState &&
             parseFloat(autoMinedDataState).toLocaleString("en-US")}{" "}
           TOY
