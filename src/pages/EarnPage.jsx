@@ -33,7 +33,7 @@ const EarnPage = () => {
   }, [data, a, telegram_id]);
 
   return (
-    <div className=" h-screen flex flex-col gap-12 px-6 pt-2 justify-between bg-gray-100">
+    <div className=" h-full min-h-screen flex flex-col gap-12 px-6 pt-2 justify-between bg-gray-100">
       <div className="flex flex-col gap-4">
         <HeaderComp visible={true} />
         <div>
