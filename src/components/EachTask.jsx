@@ -78,7 +78,7 @@ const EachTask = ({ tsk, telegram_id, claimNow, data, taskData }) => {
 
     const newWindow = window.open(task.url, "_blank");
     setMyWindow(newWindow);
-    if (newWindow && task.group_id.startsWith("twitter")) {
+    if (newWindow || task.group_id.startsWith("twitter")) {
       console.log("visited");
       if (!checkResult) {
         console.log("checking");
